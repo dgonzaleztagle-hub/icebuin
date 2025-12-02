@@ -1,0 +1,142 @@
+export type Product = {
+  sku: string
+  nombre: string
+  categoria: string
+  precioUnit: number
+  precioMayor?: number | null
+  umbralMayor?: string | null
+  favorito?: boolean
+  superfavorito?: boolean
+  visible?: boolean
+}
+
+export const mockProducts: Product[] = [
+  {
+    sku: "churrasco-caja-2-kgs-rupanco",
+    nombre: "Churrasco Caja 2 Kgs. Rupanco",
+    categoria: "vacuno",
+    precioUnit: 9720,
+    precioMayor: 8910,
+    umbralMayor: "Desde 3 cajas",
+    favorito: false,
+    superfavorito: true,
+  },
+  {
+    sku: "lomito-int-2-kgs-rupanco",
+    nombre: "Lomito Int 2 Kgs. Rupanco",
+    categoria: "vacuno",
+    precioUnit: 9720,
+    precioMayor: 8910,
+    umbralMayor: "Desde 3 cajas",
+    favorito: true,
+  },
+  {
+    sku: "nugget-pollo-bolsa-zip-lock-1-kl",
+    nombre: "Nuggets de Pollo 1 Kg",
+    categoria: "pollo",
+    precioUnit: 4500,
+    precioMayor: 4125,
+    umbralMayor: "Desde 6 unidades",
+    favorito: true,
+  },
+  {
+    sku: "hamburguesa-blend-mix-100-grs",
+    nombre: "Hamburguesa Blend 100 grs.",
+    categoria: "vacuno",
+    precioUnit: 770,
+    precioMayor: 705,
+    umbralMayor: "Sobre 15 unidades",
+  },
+  {
+    sku: "papas-pre-fritas-mccain-7x7",
+    nombre: "Papas Pre Fritas McCain 7x7 2.25kg",
+    categoria: "papas",
+    precioUnit: 5490,
+    precioMayor: 5290,
+    umbralMayor: "Desde 8 unidades",
+    favorito: true,
+  },
+  {
+    sku: "helados-mora-crema-fruna",
+    nombre: "Helados Mora Crema Fruna",
+    categoria: "helados",
+    precioUnit: 1200,
+    precioMayor: 1100,
+    umbralMayor: "Desde 12 unidades",
+  },
+  {
+    sku: "helados-palito-frambuesa-fruna",
+    nombre: "Helados Palito Frambuesa Fruna",
+    categoria: "helados",
+    precioUnit: 990,
+    precioMayor: 900,
+    umbralMayor: "Desde 12 unidades",
+    favorito: true,
+  },
+  {
+    sku: "pizza-pepperoni-470-lc-cong",
+    nombre: "Pizza Pepperoni 470g LC",
+    categoria: "pizzas",
+    precioUnit: 6890,
+    precioMayor: 0,
+    umbralMayor: null,
+  },
+  {
+    sku: "albondiga-vacuno-300-karmac",
+    nombre: "Albóndiga Vacuno 300g",
+    categoria: "vacuno",
+    precioUnit: 3990,
+    precioMayor: 3600,
+    umbralMayor: "Desde 10 unidades",
+    favorito: true,
+  },
+  {
+    sku: "edamame-minuto-verde-400-grs",
+    nombre: "Edamame Minuto Verde 400g",
+    categoria: "verduras",
+    precioUnit: 4290,
+    precioMayor: 0,
+    umbralMayor: "Sin mayorista",
+  },
+  {
+    sku: "crocante-pollo-flow-pack",
+    nombre: "Crocante de Pollo 100g Flow Pack",
+    categoria: "pollo",
+    precioUnit: 630,
+    precioMayor: 580,
+    umbralMayor: "Desde 12 unidades",
+  },
+  {
+    sku: "cassata-lucuma-chocolate",
+    nombre: "Cassata Lúcuma Chocolate 1Lt",
+    categoria: "helados",
+    precioUnit: 3290,
+    precioMayor: 2990,
+    umbralMayor: "Desde 6 unidades",
+  },
+  {
+    sku: "pulpa-maracuya-335",
+    nombre: "Pulpa Maracuyá 335g",
+    categoria: "frutas",
+    precioUnit: 3570,
+    precioMayor: 3270,
+    umbralMayor: "Desde 10 unidades",
+  },
+  {
+    sku: "queso-lpv-chanco-434",
+    nombre: "Queso LPV Chanco 434g",
+    categoria: "otros",
+    precioUnit: 6590,
+    precioMayor: 0,
+    umbralMayor: "Sin mayorista",
+  },
+  {
+    sku: "camaron-pelado-1kg",
+    nombre: "Camarón Pelado Import 1Kg",
+    categoria: "mariscos",
+    precioUnit: 4990,
+    precioMayor: 4390,
+    umbralMayor: "Desde 10 unidades",
+    favorito: true,
+  },
+]

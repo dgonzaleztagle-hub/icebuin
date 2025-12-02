@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Fondo oscuro azulado */
+    --background: 220 30% 5%;
+    --foreground: 210 40% 98%;
+
+    /* Cards semi-transparentes */
+    --card: 220 25% 8%;
+    --card-foreground: 210 40% 98%;
+
+    /* Color primario - Rosa neón */
+    --primary: 320 100% 65%;
+    --primary-foreground: 220 30% 5%;
+
+    /* Color secundario - Cyan neón */
+    --secondary: 190 100% 60%;
+    --secondary-foreground: 220 30% 5%;
+
+    /* Acento - Púrpura neón */
+    --accent: 280 100% 70%;
+    --accent-foreground: 220 30% 5%;
+
+    /* Colores neón personalizados */
+    --neon-pink: 320 100% 65%;
+    --neon-cyan: 190 100% 60%;
+    --ice-blue: 200 100% 75%;
+    
+    /* Bordes sutiles */
+    --border: 220 20% 15%;
+    --border-foreground: 210 40% 98%;
+
+    /* Gradientes y sombras neón */
+    --gradient-neon: linear-gradient(135deg, hsl(320 100% 65%), hsl(190 100% 60%));
+    --shadow-neon: 0 0 20px hsl(320 100% 65% / 0.5);
+    --shadow-cyan: 0 0 20px hsl(190 100% 60% / 0.5);
+
+    --radius: 0.75rem;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glass {
+  background: hsl(var(--card) / 0.4);
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+}
+
+.neon-border {
+  border-radius: 18px;
+  background: linear-gradient(135deg, hsl(var(--neon-pink) / 0.85), hsl(var(--neon-pink) / 0.6));
+  padding: 1px;
+}
+
+.card-surface {
+  border-radius: 16px;
+  background: hsl(var(--card));
+  height: 100%;
+  border: 1px solid hsl(var(--border) / 0.3);
+}
+
+.modal-anim {
+  animation: pop 0.25s ease-out;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
