@@ -410,10 +410,36 @@ function HomePage() {
       </section>
 
       <section id="visitanos" className="max-w-6xl mx-auto px-4 py-12 text-center text-white/70">
-        <div className="glass inline-flex flex-col gap-2 px-6 py-5 rounded-2xl">
-          <div className="text-white font-semibold">Visítanos</div>
-          <div>Gabriel Cruz 1762, Buin Oriente, Región Metropolitana, Chile</div>
-          <div>📞 +56 9 5515 9677</div>
+        <div className="glass inline-flex flex-col gap-4 px-6 py-6 rounded-2xl">
+          <div className="text-white font-semibold text-lg">Visítanos</div>
+          <div className="space-y-2">
+            <div>Gabriel Cruz 1762, Buin Oriente, Región Metropolitana, Chile</div>
+            <div>📞 +56 9 5515 9677</div>
+          </div>
+          
+          {/* Redes Sociales */}
+          <div className="flex gap-4 justify-center mt-4">
+            <a
+              href="https://www.instagram.com/congelados_icebuin/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#f442ff]/20 to-[#4ef3ff]/20 hover:from-[#f442ff]/40 hover:to-[#4ef3ff]/40 rounded-lg transition text-sm"
+              title="Síguenos en Instagram"
+            >
+              <span>📷</span>
+              Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/people/Congelados-Icebuin/pfbid0MwDddDjFTMJqtFJVJeggp94eyhCTegx6Gto4Z8gctiYjvw2KBXerzx1BbWeAUXtnl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#f442ff]/20 to-[#4ef3ff]/20 hover:from-[#f442ff]/40 hover:to-[#4ef3ff]/40 rounded-lg transition text-sm"
+              title="Síguenos en Facebook"
+            >
+              <span>👍</span>
+              Facebook
+            </a>
+          </div>
         </div>
       </section>
 
