@@ -79,3 +79,26 @@ export async function deleteProduct(sku: string): Promise<boolean> {
     return false;
   }
 }
+
+export async function uploadDescriptions(descriptions: Array<{sku: string; descripcion: string}>): Promise<{success: boolean; updated: number; failed: number}> {
+  try {
+    const response = await fetch(`${API_BASE}/update-descriptions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ descriptions }),
+    });
+    
+    if (!response.ok) {
+      console.error('Failed to upload descriptions');
+      return { success: false, updated: 0, failed: descriptions.length };
+    }
+    
+    const data = await response.json();
+    return { success: true, updated: data.updated, failed: data.failed };
+  } catch (error) {
+    console.error('Error uploading descriptions:', error);
+    return { success: false, updated: 0, failed: descriptions.length };
+  }
+}

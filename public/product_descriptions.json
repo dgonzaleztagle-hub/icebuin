@@ -1,0 +1,734 @@
+{
+  "descriptions": [
+    {
+      "sku": "1",
+      "nombre": "CHURRASCO CAJA 2 KGS. RUPANCO",
+      "descripcion": "Premium churrasco caja 2 kgs. rupanco congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precios mayori..."
+    },
+    {
+      "sku": "2",
+      "nombre": "LOMITO INT 2 KGS. RUPANCO",
+      "descripcion": "Premium lomito int 2 kgs. rupanco congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precios mayoristas..."
+    },
+    {
+      "sku": "3",
+      "nombre": "CHULETA FLOW PACK 100 GRS. RUPANCO",
+      "descripcion": "Carne de cerdo chuleta flow pack 100 grs. rupanco congelada. Producto de excelente calidad para distribuidor mayorista. Perfecto para negocio de comidas y re..."
+    },
+    {
+      "sku": "4",
+      "nombre": "CHULETA 150 GRS. CAJA 3 KGS. RUPANCO",
+      "descripcion": "Carne de cerdo chuleta 150 grs. caja 3 kgs. rupanco congelada. Producto de excelente calidad para distribuidor mayorista. Perfecto para negocio de comidas y ..."
+    },
+    {
+      "sku": "5",
+      "nombre": "CHURRASCO FLOW PACK 110 GRS. RUPANCO",
+      "descripcion": "Premium churrasco flow pack 110 grs. rupanco congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precios..."
+    },
+    {
+      "sku": "6",
+      "nombre": "HAMBURGUESA BLEND - MIX 100 GRS. RUPANCO",
+      "descripcion": "Premium hamburguesa blend - mix 100 grs. rupanco congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Pre..."
+    },
+    {
+      "sku": "7",
+      "nombre": "ALBONDIGA 900 GRS. RUPANCO",
+      "descripcion": "Premium albondiga 900 grs. rupanco congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precios mayorista..."
+    },
+    {
+      "sku": "8",
+      "nombre": "CUBITO POLLO 300 GRS. RUPANCO",
+      "descripcion": "Pollo congelado cubito pollo 300 grs. rupanco sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y negocios de comid..."
+    },
+    {
+      "sku": "9",
+      "nombre": "CARNE MOLIDA ESPECIAL 250 GRS. RUPANCO",
+      "descripcion": "Premium carne molida especial 250 grs. rupanco congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Preci..."
+    },
+    {
+      "sku": "10",
+      "nombre": "CARNE MOLIDAS TUBO 250 GRS. RUPANCO",
+      "descripcion": "Premium carne molidas tubo 250 grs. rupanco congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precios ..."
+    },
+    {
+      "sku": "11",
+      "nombre": "CARNE MOLIDA PREMIUM 250 GRS. RUPANCO",
+      "descripcion": "Premium carne molida premium 250 grs. rupanco congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precio..."
+    },
+    {
+      "sku": "12",
+      "nombre": "CARNE PICADA 250 GRS. RUPANCO",
+      "descripcion": "Premium carne picada 250 grs. rupanco congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precios mayori..."
+    },
+    {
+      "sku": "13",
+      "nombre": "PAPAS PRE FRITAS MCCAIN 7X7 2.25 KILOS",
+      "descripcion": "Papas congeladas papas pre fritas mccain 7x7 2.25 kilos procesadas y listas para usar. Perfectas para distribuidor mayorista. Ideal para industria de comidas..."
+    },
+    {
+      "sku": "14",
+      "nombre": "CAMARON 100/200 COCIDO PELADO IMPORT (1KG) PENAEUS VANN",
+      "descripcion": "Mariscos congelados camaron 100/200 cocido pelado import (1kg) penaeus vann premium importados. Para distribuidor mayorista en Santiago. Producto de alta cal..."
+    },
+    {
+      "sku": "15",
+      "nombre": "SURTIDO MARISCOS CONG IMPORTADOS (1KG)",
+      "descripcion": "Premium surtido mariscos cong importados (1kg) congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Preci..."
+    },
+    {
+      "sku": "16",
+      "nombre": "SALCHICHA SUREÑA REFIGERADO VACIO 20 UNIDADES",
+      "descripcion": "Carne de cerdo salchicha sureña refigerado vacio 20 unidades congelada. Producto de excelente calidad para distribuidor mayorista. Perfecto para negocio de c..."
+    },
+    {
+      "sku": "17",
+      "nombre": "SALCHICHA SUREÑA REFIGERADO VACIO 5 UNIDADES",
+      "descripcion": "Carne de cerdo salchicha sureña refigerado vacio 5 unidades congelada. Producto de excelente calidad para distribuidor mayorista. Perfecto para negocio de co..."
+    },
+    {
+      "sku": "18",
+      "nombre": "NUGGET POLLO BOLSA ZIP LOCK 1 KL",
+      "descripcion": "Pollo congelado nugget pollo bolsa zip lock 1 kl sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y negocios de co..."
+    },
+    {
+      "sku": "19",
+      "nombre": "SALCHICHA SUPER POLLO 5 UNIDADES",
+      "descripcion": "Carne de cerdo salchicha super pollo 5 unidades congelada. Producto de excelente calidad para distribuidor mayorista. Perfecto para negocio de comidas y rest..."
+    },
+    {
+      "sku": "20",
+      "nombre": "SALCHICHA SUPER POLLO 20 UNIDADES",
+      "descripcion": "Carne de cerdo salchicha super pollo 20 unidades congelada. Producto de excelente calidad para distribuidor mayorista. Perfecto para negocio de comidas y res..."
+    },
+    {
+      "sku": "21",
+      "nombre": "NUGGETS DE POLLO SÚPER POLLO BOLSA 400 GRS.",
+      "descripcion": "Pollo congelado nuggets de pollo súper pollo bolsa 400 grs. sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y neg..."
+    },
+    {
+      "sku": "22",
+      "nombre": "CROCANTE POLLO 100 GRS. CONGELADO FLOW PACK",
+      "descripcion": "Pollo congelado crocante pollo 100 grs. congelado flow pack sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y neg..."
+    },
+    {
+      "sku": "23",
+      "nombre": "HAMBUERGUESA TRADICIONAL 185 GRS. KING",
+      "descripcion": "Premium hambuerguesa tradicional 185 grs. king congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Preci..."
+    },
+    {
+      "sku": "24",
+      "nombre": "HAMBURGUESA DE POLLO KING 185 GRS.",
+      "descripcion": "Premium hamburguesa de pollo king 185 grs. congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precios m..."
+    },
+    {
+      "sku": "25",
+      "nombre": "HAMBUERGUESA DE POLLO LC 100 GRS.",
+      "descripcion": "Premium hambuerguesa de pollo lc 100 grs. congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precios ma..."
+    },
+    {
+      "sku": "26",
+      "nombre": "HAMBUERGUESA DE SOYA LC 100 GRS.",
+      "descripcion": "Producto vegano congelado hambuerguesa de soya lc 100 grs. de calidad. Distribuidor mayorista en Santiago. Opción saludable para negocios y restaurantes."
+    },
+    {
+      "sku": "27",
+      "nombre": "CHURRASCO DE VACUNO KING 90 GRS. (3 UNIDADES POR BOLSA)",
+      "descripcion": "Premium churrasco de vacuno king 90 grs. (3 unidades por bolsa) congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes ..."
+    },
+    {
+      "sku": "28",
+      "nombre": "NUGGETS DE POLLO BOLSA 2.5 KG.",
+      "descripcion": "Pollo congelado nuggets de pollo bolsa 2.5 kg. sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y negocios de comi..."
+    },
+    {
+      "sku": "29",
+      "nombre": "NUGGETS DE POLLO 300 GRS.",
+      "descripcion": "Pollo congelado nuggets de pollo 300 grs. sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y negocios de comidas r..."
+    },
+    {
+      "sku": "30",
+      "nombre": "NUGGETS DE POLLO BOLSA 275 GRS.",
+      "descripcion": "Pollo congelado nuggets de pollo bolsa 275 grs. sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y negocios de com..."
+    },
+    {
+      "sku": "31",
+      "nombre": "ESTUCHE DE HAMBUERGUESAS SUPER BEEF 10 UNIDADES (100 GRS. C/U)",
+      "descripcion": "Premium estuche de hambuerguesas super beef 10 unidades (100 grs. c/u) congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restau..."
+    },
+    {
+      "sku": "32",
+      "nombre": "SUPREMA DE POLLO LC 120 GRS.",
+      "descripcion": "Pollo congelado suprema de pollo lc 120 grs. sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y negocios de comida..."
+    },
+    {
+      "sku": "33",
+      "nombre": "NUGG POLLO DINOSAURIO 360 GRS.",
+      "descripcion": "Pollo congelado nugg pollo dinosaurio 360 grs. sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y negocios de comi..."
+    },
+    {
+      "sku": "34",
+      "nombre": "PACK CROCANTE DE POLLO SP 4 UNIDADES",
+      "descripcion": "Pollo congelado pack crocante de pollo sp 4 unidades sanitario y de primera calidad. Distribuidor mayorista en Santiago. Ideal para restaurantes y negocios d..."
+    },
+    {
+      "sku": "35",
+      "nombre": "CHAPSUI CONGELADO CAJA 2 KLS.",
+      "descripcion": "Productos congelados variados chapsui congelado caja 2 kls. de calidad. Distribuidor mayorista en Santiago. Para negocio de distribución de congelados."
+    },
+    {
+      "sku": "36",
+      "nombre": "CUBOS ZANAHORIA CONGELADA 2 KLS.",
+      "descripcion": "Verduras congeladas cubos zanahoria congelada 2 kls. frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "37",
+      "nombre": "CHAPSUI WOK CONGELADO 500 GRS. CAJA",
+      "descripcion": "Productos congelados variados chapsui wok congelado 500 grs. caja de calidad. Distribuidor mayorista en Santiago. Para negocio de distribución de congelados."
+    },
+    {
+      "sku": "38",
+      "nombre": "JUGO LIMON CONGELADO 1 KL.",
+      "descripcion": "Productos congelados variados jugo limon congelado 1 kl. de calidad. Distribuidor mayorista en Santiago. Para negocio de distribución de congelados."
+    },
+    {
+      "sku": "39",
+      "nombre": "AJO PICADO 100 GRS",
+      "descripcion": "Verduras congeladas ajo picado 100 grs frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "40",
+      "nombre": "PULPA DE MARACUYA 400 GRS.",
+      "descripcion": "Frutas congeladas pulpa de maracuya 400 grs. de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "41",
+      "nombre": "QUESO LPV CHANCO 434 GRS",
+      "descripcion": "Productos congelados variados queso lpv chanco 434 grs de calidad. Distribuidor mayorista en Santiago. Para negocio de distribución de congelados."
+    },
+    {
+      "sku": "42",
+      "nombre": "HELADOS PIÑA GRANEL X 10 LITROS FRUNA",
+      "descripcion": "Helado congelado helados piña granel x 10 litros fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con..."
+    },
+    {
+      "sku": "43",
+      "nombre": "HELADOS CREMINO FRUNA",
+      "descripcion": "Helado congelado helados cremino fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competi..."
+    },
+    {
+      "sku": "44",
+      "nombre": "HELADOS MORA CREMA FRUNA",
+      "descripcion": "Helado congelado helados mora crema fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios comp..."
+    },
+    {
+      "sku": "45",
+      "nombre": "HELADOS PALETON MILANO FRUNA",
+      "descripcion": "Helado congelado helados paleton milano fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios ..."
+    },
+    {
+      "sku": "46",
+      "nombre": "HELADOS MANZA PATITA FRUNA",
+      "descripcion": "Helado congelado helados manza patita fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios co..."
+    },
+    {
+      "sku": "47",
+      "nombre": "HELADOS PALITO PIÑA FRUNA",
+      "descripcion": "Helado congelado helados palito piña fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios com..."
+    },
+    {
+      "sku": "48",
+      "nombre": "HELADOS PALITO NARANJA FRUNA",
+      "descripcion": "Helado congelado helados palito naranja fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios ..."
+    },
+    {
+      "sku": "49",
+      "nombre": "HELADOS PALETA BOWLING FRUNA",
+      "descripcion": "Helado congelado helados paleta bowling fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios ..."
+    },
+    {
+      "sku": "50",
+      "nombre": "HELADOS PALITO LIMA LIMÓN FRUNA",
+      "descripcion": "Helado congelado helados palito lima limón fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con preci..."
+    },
+    {
+      "sku": "51",
+      "nombre": "HELADOS MINI CASSATIN FRUNA",
+      "descripcion": "Helado congelado helados mini cassatin fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios c..."
+    },
+    {
+      "sku": "52",
+      "nombre": "HELADOS FRUNA TANKER FRUNA",
+      "descripcion": "Helado congelado helados fruna tanker fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios co..."
+    },
+    {
+      "sku": "53",
+      "nombre": "HELADOS NARANJA FRU FRUNA",
+      "descripcion": "Helado congelado helados naranja fru fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios com..."
+    },
+    {
+      "sku": "54",
+      "nombre": "HELADOS PIÑA FRU FRUNA",
+      "descripcion": "Helado congelado helados piña fru fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios compet..."
+    },
+    {
+      "sku": "55",
+      "nombre": "HELADOS CASSATA PIÑA 1LT FRUNA",
+      "descripcion": "Helado congelado helados cassata piña 1lt fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precio..."
+    },
+    {
+      "sku": "56",
+      "nombre": "HELADOS PALITO FRAMBUESA FRUNA",
+      "descripcion": "Helado congelado helados palito frambuesa fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precio..."
+    },
+    {
+      "sku": "57",
+      "nombre": "HELADOS BRAZUKA LIMON-MANZANA FRUNA",
+      "descripcion": "Helado congelado helados brazuka limon-manzana fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con p..."
+    },
+    {
+      "sku": "58",
+      "nombre": "HELADOS PALO PALITO FRUNA",
+      "descripcion": "Helado congelado helados palo palito fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios com..."
+    },
+    {
+      "sku": "59",
+      "nombre": "HELADOS FRUTI-FRU FRUNA",
+      "descripcion": "Helado congelado helados fruti-fru fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios compe..."
+    },
+    {
+      "sku": "60",
+      "nombre": "MUSTANG CLASICO FRUNA",
+      "descripcion": "Helado congelado mustang clasico fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competi..."
+    },
+    {
+      "sku": "61",
+      "nombre": "MUSTANG ALEGRE FRUNA",
+      "descripcion": "Helado congelado mustang alegre fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competit..."
+    },
+    {
+      "sku": "62",
+      "nombre": "MUSTANG FRAMBUESA FRUNA",
+      "descripcion": "Helado congelado mustang frambuesa fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios compe..."
+    },
+    {
+      "sku": "63",
+      "nombre": "HELADOS CASSATA LUCUMA FRUNA 1 LT",
+      "descripcion": "Helado congelado helados cassata lucuma fruna 1 lt de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con pre..."
+    },
+    {
+      "sku": "64",
+      "nombre": "HELADOS CASSATA CHOCOLATE FRUNA 1 LT",
+      "descripcion": "Helado congelado helados cassata chocolate fruna 1 lt de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con ..."
+    },
+    {
+      "sku": "65",
+      "nombre": "HELADOS PALITO VANNICHOC FRUNA",
+      "descripcion": "Helado congelado helados palito vannichoc fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precio..."
+    },
+    {
+      "sku": "66",
+      "nombre": "MUSTANG BLANCO FRUNA",
+      "descripcion": "Helado congelado mustang blanco fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competit..."
+    },
+    {
+      "sku": "67",
+      "nombre": "MUSTANG ALMENDRADO FRUNA",
+      "descripcion": "Helado congelado mustang almendrado fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios comp..."
+    },
+    {
+      "sku": "68",
+      "nombre": "HELADOS PALITO MORA MORA FRUNA",
+      "descripcion": "Helado congelado helados palito mora mora fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precio..."
+    },
+    {
+      "sku": "69",
+      "nombre": "HELADOS SPLASH PIÑA FRUNA",
+      "descripcion": "Helado congelado helados splash piña fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios com..."
+    },
+    {
+      "sku": "70",
+      "nombre": "HELADOS CHOCO FRU FRUNA",
+      "descripcion": "Helado congelado helados choco fru fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios compe..."
+    },
+    {
+      "sku": "71",
+      "nombre": "HELADOS CROCANTE FRUNA",
+      "descripcion": "Helado congelado helados crocante fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios compet..."
+    },
+    {
+      "sku": "72",
+      "nombre": "HELADOS CHIRY FRU FRUNA",
+      "descripcion": "Helado congelado helados chiry fru fruna de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios compe..."
+    },
+    {
+      "sku": "73",
+      "nombre": "PALETA YIRO UVA PANDA",
+      "descripcion": "Helado congelado paleta yiro uva panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competi..."
+    },
+    {
+      "sku": "74",
+      "nombre": "PALETA YIRO LIMON MANZANA PANDA",
+      "descripcion": "Helado congelado paleta yiro limon manzana panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con preci..."
+    },
+    {
+      "sku": "75",
+      "nombre": "PALETA YIRO FRAMBUESA / PAP PANDA",
+      "descripcion": "Helado congelado paleta yiro frambuesa / pap panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con pre..."
+    },
+    {
+      "sku": "76",
+      "nombre": "PALETA CHIRIMOYA ALEGRE PANDA",
+      "descripcion": "Helado congelado paleta chirimoya alegre panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios..."
+    },
+    {
+      "sku": "77",
+      "nombre": "PALETA LIMON 2 P PANDA",
+      "descripcion": "Helado congelado paleta limon 2 p panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios compet..."
+    },
+    {
+      "sku": "78",
+      "nombre": "PALETA CREMA FRAMBUESA PANDA",
+      "descripcion": "Helado congelado paleta crema frambuesa panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios ..."
+    },
+    {
+      "sku": "79",
+      "nombre": "CASSATA TRISABOR PANDA 1 LT PANDA",
+      "descripcion": "Helado congelado cassata trisabor panda 1 lt panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con pre..."
+    },
+    {
+      "sku": "80",
+      "nombre": "CASSATA LUCUMA CHOCOLATE CREMA 1 LT PANDA",
+      "descripcion": "Helado congelado cassata lucuma chocolate crema 1 lt panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista..."
+    },
+    {
+      "sku": "81",
+      "nombre": "CASSATA PIÑA 1 LT PANDA",
+      "descripcion": "Helado congelado cassata piña 1 lt panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios compe..."
+    },
+    {
+      "sku": "82",
+      "nombre": "CASSATA FRUTOS DEL BOSQUE 1 LT PANDA",
+      "descripcion": "Helado congelado cassata frutos del bosque 1 lt panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con ..."
+    },
+    {
+      "sku": "83",
+      "nombre": "CASSATA CREMA FRAMBUESA 1 LT PANDA",
+      "descripcion": "Helado congelado cassata crema frambuesa 1 lt panda de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con pr..."
+    },
+    {
+      "sku": "84",
+      "nombre": "PAPA DUQUESA 1 KG. MINUTO VERDE",
+      "descripcion": "Papas congeladas papa duquesa 1 kg. minuto verde procesadas y listas para usar. Perfectas para distribuidor mayorista. Ideal para industria de comidas rápidas."
+    },
+    {
+      "sku": "85",
+      "nombre": "PAPA DUQUESA 2.5 KGS. MINUTO VERDE",
+      "descripcion": "Papas congeladas papa duquesa 2.5 kgs. minuto verde procesadas y listas para usar. Perfectas para distribuidor mayorista. Ideal para industria de comidas ráp..."
+    },
+    {
+      "sku": "86",
+      "nombre": "ARROLLADO JAMON/QUESO 40 GRS. 40 UNIDADES",
+      "descripcion": "Productos congelados variados arrollado jamon/queso 40 grs. 40 unidades de calidad. Distribuidor mayorista en Santiago. Para negocio de distribución de conge..."
+    },
+    {
+      "sku": "87",
+      "nombre": "ARROLLADO PRIMAVERA 40 GRS. 40 UNIDADES",
+      "descripcion": "Verduras congeladas arrollado primavera 40 grs. 40 unidades frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "88",
+      "nombre": "PASTA CHOCLO 1 KL. MINUTO VERDE",
+      "descripcion": "Verduras congeladas pasta choclo 1 kl. minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "89",
+      "nombre": "HAMBUERGUESA GARBANZO 100 GRS. MINUTO VERDE",
+      "descripcion": "Producto vegano congelado hambuerguesa garbanzo 100 grs. minuto verde de calidad. Distribuidor mayorista en Santiago. Opción saludable para negocios y restau..."
+    },
+    {
+      "sku": "90",
+      "nombre": "HAMBUERGUESA POROTO NEGRO 100 GRS. MINUTO VERDE",
+      "descripcion": "Producto vegano congelado hambuerguesa poroto negro 100 grs. minuto verde de calidad. Distribuidor mayorista en Santiago. Opción saludable para negocios y re..."
+    },
+    {
+      "sku": "91",
+      "nombre": "ARVEJA 200 GRS. MINUTITO VERDE MINI",
+      "descripcion": "Verduras congeladas arveja 200 grs. minutito verde mini frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "92",
+      "nombre": "CHOCLO 200 GRS. MINUTITO VERDE",
+      "descripcion": "Verduras congeladas choclo 200 grs. minutito verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "93",
+      "nombre": "CHOCLO TROCITO MINUTO VERDE 180 GRS.",
+      "descripcion": "Verduras congeladas choclo trocito minuto verde 180 grs. frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "94",
+      "nombre": "ENSALADA JARDINERA 200 GRS. MINUTO VERDE",
+      "descripcion": "Verduras congeladas ensalada jardinera 200 grs. minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "95",
+      "nombre": "HABAS 200 GRS. MINUTITO VERDE",
+      "descripcion": "Verduras congeladas habas 200 grs. minutito verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "96",
+      "nombre": "POROTO VERDE 150 GRS. MINUTO VERDE",
+      "descripcion": "Verduras congeladas poroto verde 150 grs. minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "97",
+      "nombre": "PRIMAVERA 200 GRS. MINI MINUTO VERDE",
+      "descripcion": "Verduras congeladas primavera 200 grs. mini minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "98",
+      "nombre": "SOFRITO CON AJO MINUTO VERDE 150 GRS.",
+      "descripcion": "Verduras congeladas sofrito con ajo minuto verde 150 grs. frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "99",
+      "nombre": "ARVEJA 500 GRS. MINUTO VERDE",
+      "descripcion": "Verduras congeladas arveja 500 grs. minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "100",
+      "nombre": "CEBOLLA PICADA MINUTO VERDE 250 GRS.",
+      "descripcion": "Verduras congeladas cebolla picada minuto verde 250 grs. frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "101",
+      "nombre": "CHOCLO 500 GRS. MINUTO VERDE",
+      "descripcion": "Verduras congeladas choclo 500 grs. minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "102",
+      "nombre": "EDAMAME MINUTO VERDE 400 GRS.",
+      "descripcion": "Verduras congeladas edamame minuto verde 400 grs. frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "103",
+      "nombre": "ESPARRAGO MINUTO VERDE 350 GRS.",
+      "descripcion": "Verduras congeladas esparrago minuto verde 350 grs. frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "104",
+      "nombre": "HABAS 500 GRS. MINUTO VERDE",
+      "descripcion": "Verduras congeladas habas 500 grs. minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "105",
+      "nombre": "MIX DE PIMENTONES 150 GRS. MINUTO VERDE",
+      "descripcion": "Verduras congeladas mix de pimentones 150 grs. minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "106",
+      "nombre": "PRIMAVERA 500 MINUTO VERDE",
+      "descripcion": "Verduras congeladas primavera 500 minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "107",
+      "nombre": "ZAPALLO CUBO MINUTO VERDE 500",
+      "descripcion": "Verduras congeladas zapallo cubo minuto verde 500 frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "108",
+      "nombre": "ARANDANO MINUTO VERDE 400 GRS.",
+      "descripcion": "Frutas congeladas arandano minuto verde 400 grs. de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "109",
+      "nombre": "DURAZNO SLICE 500 GRS. MINUTO VERDE",
+      "descripcion": "Frutas congeladas durazno slice 500 grs. minuto verde de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "110",
+      "nombre": "FRUTILLA MINUTO VERDE 500 GRS.",
+      "descripcion": "Frutas congeladas frutilla minuto verde 500 grs. de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "111",
+      "nombre": "FRUTOS DEL BOSQUE MINUTO VERDE 400 GRS.",
+      "descripcion": "Frutas congeladas frutos del bosque minuto verde 400 grs. de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "112",
+      "nombre": "MANGO EN TROZO MINUTO VERDE 500 GRS.",
+      "descripcion": "Frutas congeladas mango en trozo minuto verde 500 grs. de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "113",
+      "nombre": "PIÑA EN TROZO 500 MINUTO VERDE",
+      "descripcion": "Frutas congeladas piña en trozo 500 minuto verde de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "114",
+      "nombre": "CHAMPIÑON LAMINADO 350 GRS. MINUTO VERDE",
+      "descripcion": "Verduras congeladas champiñon laminado 350 grs. minuto verde frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "115",
+      "nombre": "HABAS PELADAS MINUTO VERDE PREMIUM 400 GRS.",
+      "descripcion": "Verduras congeladas habas peladas minuto verde premium 400 grs. frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y co..."
+    },
+    {
+      "sku": "116",
+      "nombre": "PULPA MANGO 335 GRS. MINUTO VERDE",
+      "descripcion": "Frutas congeladas pulpa mango 335 grs. minuto verde de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "117",
+      "nombre": "PULPA FRAMBUESA 335 GRS. MINUTO VERDE",
+      "descripcion": "Frutas congeladas pulpa frambuesa 335 grs. minuto verde de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "118",
+      "nombre": "PULPA MARACUYA 335 GRS. MINUTO VERDE",
+      "descripcion": "Frutas congeladas pulpa maracuya 335 grs. minuto verde de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "119",
+      "nombre": "PULPA PIÑA 335 GRS. MINUTO VERDE",
+      "descripcion": "Frutas congeladas pulpa piña 335 grs. minuto verde de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "120",
+      "nombre": "ALBONDIGA VACUNO 300 GRS. KARMAC",
+      "descripcion": "Premium albondiga vacuno 300 grs. karmac congelado - Carnes de vacuno de calidad para distribuidor mayorista. Ideal para restaurantes y negocios. Precios may..."
+    },
+    {
+      "sku": "121",
+      "nombre": "PULPA FRUTILLA 335 GRS. MINUTO VERDE",
+      "descripcion": "Frutas congeladas pulpa frutilla 335 grs. minuto verde de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "122",
+      "nombre": "PIZZA 4 QUESOS 470 GRS. LC CONG",
+      "descripcion": "Pizza congelada pizza 4 quesos 470 grs. lc cong lista para hornear. Distribuidor mayorista en Santiago. Variedad de sabores para negocio mayorista."
+    },
+    {
+      "sku": "123",
+      "nombre": "PIZZA JAMÓN MOZZARELLA 470 LC CONG",
+      "descripcion": "Pizza congelada pizza jamón mozzarella 470 lc cong lista para hornear. Distribuidor mayorista en Santiago. Variedad de sabores para negocio mayorista."
+    },
+    {
+      "sku": "124",
+      "nombre": "PIZZA PEPPERONI 470G LC CONG",
+      "descripcion": "Pizza congelada pizza pepperoni 470g lc cong lista para hornear. Distribuidor mayorista en Santiago. Variedad de sabores para negocio mayorista."
+    },
+    {
+      "sku": "125",
+      "nombre": "VARITAS DE QUESO 500 GRS. FOOD SERVICE",
+      "descripcion": "Productos congelados variados varitas de queso 500 grs. food service de calidad. Distribuidor mayorista en Santiago. Para negocio de distribución de congelados."
+    },
+    {
+      "sku": "126",
+      "nombre": "PIZZA AMERCIANA 635G MINUTO VERDE",
+      "descripcion": "Pizza congelada pizza amerciana 635g minuto verde lista para hornear. Distribuidor mayorista en Santiago. Variedad de sabores para negocio mayorista."
+    },
+    {
+      "sku": "127",
+      "nombre": "PIZZA DE LA HUERTA 675G MINUTO VERDE",
+      "descripcion": "Pizza congelada pizza de la huerta 675g minuto verde lista para hornear. Distribuidor mayorista en Santiago. Variedad de sabores para negocio mayorista."
+    },
+    {
+      "sku": "128",
+      "nombre": "PIZZA NAPOLITANA 642G MINUTO VERDE",
+      "descripcion": "Pizza congelada pizza napolitana 642g minuto verde lista para hornear. Distribuidor mayorista en Santiago. Variedad de sabores para negocio mayorista."
+    },
+    {
+      "sku": "129",
+      "nombre": "PIZZA VEGETARIANA 650G MINUTO VERDE",
+      "descripcion": "Pizza congelada pizza vegetariana 650g minuto verde lista para hornear. Distribuidor mayorista en Santiago. Variedad de sabores para negocio mayorista."
+    },
+    {
+      "sku": "130",
+      "nombre": "TORTILLA DE POROTO VERDE 350 GRS.",
+      "descripcion": "Verduras congeladas tortilla de poroto verde 350 grs. frescas y preservadas. Distribuidor mayorista en Santiago. Para negocios de restauración y comidas."
+    },
+    {
+      "sku": "131",
+      "nombre": "EMPANADAS RAVIOLERAS GRANEL (192 UNIDADES) CAJA",
+      "descripcion": "Productos congelados variados empanadas ravioleras granel (192 unidades) caja de calidad. Distribuidor mayorista en Santiago. Para negocio de distribución de..."
+    },
+    {
+      "sku": "132",
+      "nombre": "SAVORY CENTELLA MANZANA - LIMÓN",
+      "descripcion": "Helado congelado savory centella manzana - limón de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con preci..."
+    },
+    {
+      "sku": "133",
+      "nombre": "COLA DE TIGRE",
+      "descripcion": "Helado congelado cola de tigre de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competitivos."
+    },
+    {
+      "sku": "134",
+      "nombre": "TRULULU",
+      "descripcion": "Helado congelado trululu de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competitivos."
+    },
+    {
+      "sku": "135",
+      "nombre": "KRIKO",
+      "descripcion": "Helado congelado kriko de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competitivos."
+    },
+    {
+      "sku": "136",
+      "nombre": "CRAZY FRAMBUESA",
+      "descripcion": "Helado congelado crazy frambuesa de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competitivos."
+    },
+    {
+      "sku": "137",
+      "nombre": "DANKY 21",
+      "descripcion": "Helado congelado danky 21 de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competitivos."
+    },
+    {
+      "sku": "138",
+      "nombre": "MEGA FRAMBUESA",
+      "descripcion": "Helado congelado mega frambuesa de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competitivos."
+    },
+    {
+      "sku": "139",
+      "nombre": "MEGA SAHNE NUSS",
+      "descripcion": "Helado congelado mega sahne nuss de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competitivos."
+    },
+    {
+      "sku": "140",
+      "nombre": "CHOMP",
+      "descripcion": "Helado congelado chomp de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competitivos."
+    },
+    {
+      "sku": "141",
+      "nombre": "SANHE NUSS BOMBON",
+      "descripcion": "Helado congelado sanhe nuss bombon de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competitivos."
+    },
+    {
+      "sku": "142",
+      "nombre": "PURA FRUTA FRAMBUESA",
+      "descripcion": "Frutas congeladas pura fruta frambuesa de calidad. Para distribuidor mayorista. Ideales para postres, bebidas y negocios de gastronomía."
+    },
+    {
+      "sku": "143",
+      "nombre": "BILZ Y PAP",
+      "descripcion": "Productos congelados variados bilz y pap de calidad. Distribuidor mayorista en Santiago. Para negocio de distribución de congelados."
+    },
+    {
+      "sku": "144",
+      "nombre": "CRAZY HELADO VAINILLA",
+      "descripcion": "Helado congelado crazy helado vainilla de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competi..."
+    },
+    {
+      "sku": "145",
+      "nombre": "CASSATA PIÑA 1 LITRO",
+      "descripcion": "Helado congelado cassata piña 1 litro de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con precios competit..."
+    },
+    {
+      "sku": "146",
+      "nombre": "CASSATA CHOCOLATE SUIZO 1 LITRO",
+      "descripcion": "Helado congelado cassata chocolate suizo 1 litro de marcas reconocidas. Distribuidor mayorista de helados en Santiago. Ideal para negocio mayorista con preci..."
+    }
+  ]
+}

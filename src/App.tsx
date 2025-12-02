@@ -3,7 +3,7 @@ import { useMemo, useState, type ChangeEvent, useEffect } from "react"
 import { mockProducts, type Product } from "./data/mockProducts"
 import { parseExcelFile, processProducts } from "./utils/excelParser"
 import { getImagePath } from "./utils/imageLoader"
-import { getAllProducts, uploadProductsFromExcel } from "./utils/apiClient"
+import { getAllProducts, uploadProductsFromExcel, uploadDescriptions } from "./utils/apiClient"
 import { NotFound } from "./pages/NotFound"
 
 function ProductCard({
@@ -454,6 +454,8 @@ function AdminPage() {
   const [imagesCount, setImagesCount] = useState<number>(0)
   const [status, setStatus] = useState<string>("")
   const [loadedProducts, setLoadedProducts] = useState<Product[]>([])
+  const [descriptionsFile, setDescriptionsFile] = useState<File | null>(null)
+  const [descriptionsStatus, setDescriptionsStatus] = useState<string>("")
   const navigate = useNavigate()
 
   const handleExcel = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -475,6 +477,43 @@ function AdminPage() {
   const handleImages = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
     setImagesCount(files ? files.length : 0)
+  }
+
+  const handleDescriptionsJSON = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      setDescriptionsFile(file)
+      setDescriptionsStatus(`📄 ${file.name} seleccionado`)
+    }
+  }
+
+  const uploadDescriptionsFromJSON = async () => {
+    if (!descriptionsFile) {
+      setDescriptionsStatus("Selecciona un archivo JSON de descripciones primero.")
+      return
+    }
+
+    setDescriptionsStatus("Cargando descripciones...")
+
+    try {
+      const fileContent = await descriptionsFile.text()
+      const data = JSON.parse(fileContent)
+      
+      if (!data.descriptions || !Array.isArray(data.descriptions)) {
+        setDescriptionsStatus("✗ Formato inválido. El archivo debe contener una propiedad 'descriptions' con un array.")
+        return
+      }
+
+      const result = await uploadDescriptions(data.descriptions)
+      
+      if (result.success) {
+        setDescriptionsStatus(`✓ ${result.updated} descripciones actualizadas exitosamente!`)
+      } else {
+        setDescriptionsStatus(`✗ Error: ${result.failed} descripciones fallaron.`)
+      }
+    } catch (error) {
+      setDescriptionsStatus(`✗ Error al procesar JSON: ${error instanceof Error ? error.message : "Error desconocido"}`)
+    }
   }
 
   const processUpload = async () => {
@@ -521,7 +560,7 @@ function AdminPage() {
           </button>
         </div>
 
-        <div className="glass rounded-2xl p-6 border border-white/10">
+        <div className="glass rounded-2xl p-6 border border-white/10 mb-6">
           <div className="flex items-center justify-between mb-6">
             <div>
               <div className="text-lg font-semibold">Importar Catálogo</div>
@@ -607,7 +646,58 @@ function AdminPage() {
           </div>
         </div>
 
-        <div className="mt-6 glass rounded-2xl p-6 border border-white/10">
+        {/* Descripciones Section */}
+        <div className="glass rounded-2xl p-6 border border-white/10 mb-6">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <div className="text-lg font-semibold">📝 Cargar Descripciones SEO</div>
+              <div className="text-white/60 text-sm">Sube JSON con descripciones de productos.</div>
+            </div>
+            <a
+              href="product_descriptions.json"
+              className="text-sm text-[#4ef3ff] hover:underline"
+              download
+            >
+              Descargar template
+            </a>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <label className="flex flex-col gap-2">
+              <span className="text-sm text-white/80">Archivo JSON</span>
+              <input
+                type="file"
+                accept=".json"
+                onChange={handleDescriptionsJSON}
+                className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm"
+              />
+              {descriptionsFile && <span className="text-xs text-white/60">Archivo: {descriptionsFile.name}</span>}
+            </label>
+
+            <button
+              onClick={uploadDescriptionsFromJSON}
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-[#4ef3ff] to-[#f442ff] text-[#0a0a10] font-semibold shadow-glow hover:opacity-90 transition"
+            >
+              Cargar Descripciones
+            </button>
+
+            {descriptionsStatus && (
+              <div
+                className={`text-sm p-3 rounded-lg ${
+                  descriptionsStatus.includes("✓")
+                    ? "bg-green-500/20 text-green-300 border border-green-500/40"
+                    : descriptionsStatus.includes("✗")
+                      ? "bg-red-500/20 text-red-300 border border-red-500/40"
+                      : "bg-blue-500/20 text-blue-300 border border-blue-500/40"
+                }`}
+              >
+                {descriptionsStatus}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="glass rounded-2xl p-6 border border-white/10">
           <div className="text-sm text-white/70">
             <p className="mb-2">
               <strong>Instrucciones:</strong>
@@ -617,6 +707,7 @@ function AdminPage() {
               <li>Selecciona el archivo Excel con los productos</li>
               <li>(Opcional) Sube las imágenes .jpg correspondientes</li>
               <li>Haz clic en "Guardar Productos"</li>
+              <li>(Opcional) Descarga y carga el JSON de descripciones SEO</li>
               <li>Recarga la página principal para ver los cambios</li>
             </ul>
           </div>
