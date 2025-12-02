@@ -32,6 +32,7 @@ export default async function handler(
         precioUnit: parseFloat(row.preciounit),
         precioMayor: row.preciomayor ? parseFloat(row.preciomayor) : null,
         umbralMayor: row.umbralmayor,
+        descripcion: row.descripcion || null,
         favorito: row.favorito,
         superfavorito: row.superfavorito,
         visible: row.visible,
@@ -63,14 +64,15 @@ export default async function handler(
       for (const product of products) {
         try {
           await sql`
-            INSERT INTO products (sku, nombre, categoria, preciounit, preciomayor, umbralmayor, favorito, superfavorito, visible, updated_at)
-            VALUES (${product.sku}, ${product.nombre}, ${product.categoria}, ${product.precioUnit}, ${product.precioMayor}, ${product.umbralMayor}, ${product.favorito || false}, ${product.superfavorito || false}, ${product.visible !== false}, NOW())
+            INSERT INTO products (sku, nombre, categoria, preciounit, preciomayor, umbralmayor, descripcion, favorito, superfavorito, visible, updated_at)
+            VALUES (${product.sku}, ${product.nombre}, ${product.categoria}, ${product.precioUnit}, ${product.precioMayor}, ${product.umbralMayor}, ${product.descripcion || null}, ${product.favorito || false}, ${product.superfavorito || false}, ${product.visible !== false}, NOW())
             ON CONFLICT (sku) DO UPDATE SET
               nombre = EXCLUDED.nombre,
               categoria = EXCLUDED.categoria,
               preciounit = EXCLUDED.preciounit,
               preciomayor = EXCLUDED.preciomayor,
               umbralmayor = EXCLUDED.umbralmayor,
+              descripcion = EXCLUDED.descripcion,
               favorito = EXCLUDED.favorito,
               superfavorito = EXCLUDED.superfavorito,
               visible = EXCLUDED.visible,

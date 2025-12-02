@@ -4,6 +4,7 @@ import { mockProducts, type Product } from "./data/mockProducts"
 import { parseExcelFile, processProducts } from "./utils/excelParser"
 import { getImagePath } from "./utils/imageLoader"
 import { getAllProducts, uploadProductsFromExcel } from "./utils/apiClient"
+import { NotFound } from "./pages/NotFound"
 
 function ProductCard({
   product,
@@ -21,10 +22,11 @@ function ProductCard({
         <div className="relative overflow-hidden h-56 w-full">
           <img
             src={getImagePath(product.sku)}
-            alt={product.nombre}
+            alt={`${product.nombre} - ${product.categoria} congelado - distribuidor mayorista`}
+            title={product.nombre}
+            loading="lazy"
             className="h-full w-full object-contain object-center bg-white transition-transform duration-500 group-hover:scale-110 rounded-t-[16px]"
             onError={(e) => {
-              // Si la imagen no existe, mostrar placeholder
               (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23ffffff" width="400" height="300"/%3E%3C/svg%3E'
             }}
           />
@@ -50,7 +52,9 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
         <div className="relative overflow-hidden">
           <img
             src={getImagePath(product.sku)}
-            alt={product.nombre}
+            alt={`${product.nombre} - ${product.categoria} congelado - distribuidor mayorista`}
+            title={product.nombre}
+            loading="lazy"
             className="h-48 w-full object-contain object-center bg-white"
             onError={(e) => {
               (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23ffffff" width="400" height="300"/%3E%3C/svg%3E'
@@ -136,7 +140,9 @@ function SuperfavoritoModal({ product, onClose }: { product: Product | null; onC
         <div className="relative overflow-hidden h-80 w-full">
           <img
             src={getImagePath(product.sku)}
-            alt={product.nombre}
+            alt={`${product.nombre} - SUPER FAVORITO - ${product.categoria} congelado`}
+            title={product.nombre}
+            loading="lazy"
             className="h-full w-full object-contain object-center bg-white"
             onError={(e) => {
               (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23ffffff" width="400" height="300"/%3E%3C/svg%3E'
@@ -600,6 +606,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/mododios" element={<AdminPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )

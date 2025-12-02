@@ -5,6 +5,7 @@ export type Product = {
   precioUnit: number
   precioMayor?: number | null
   umbralMayor?: string | null
+  descripcion?: string | null
   favorito?: boolean
   superfavorito?: boolean
   visible?: boolean
