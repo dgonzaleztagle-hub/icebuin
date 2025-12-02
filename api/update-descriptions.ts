@@ -22,12 +22,12 @@ export default async function handler(req: any, res: any) {
         // Ensure SKU is padded to 3 digits
         const skuPadded = item.sku.toString().padStart(3, '0');
         
-        // Update by SKU match
+        // Update by SKU match - try both quoted and unquoted
         const result = await sql`
           UPDATE products 
           SET descripcion = ${item.descripcion}
-          WHERE "SKU" = ${skuPadded}
-          RETURNING "SKU"
+          WHERE sku = ${skuPadded}
+          RETURNING sku
         `;
         
         if (result.rows.length > 0) {
