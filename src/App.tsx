@@ -3,6 +3,7 @@ import { useMemo, useState, type ChangeEvent, useEffect } from "react"
 import { mockProducts, type Product } from "./data/mockProducts"
 import { parseExcelFile, processProducts } from "./utils/excelParser"
 import { getImagePath } from "./utils/imageLoader"
+import { getAllProducts, uploadProductsFromExcel } from "./utils/apiClient"
 
 function ProductCard({
   product,
@@ -225,21 +226,41 @@ function HomePage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [superfavoritoShown, setSuperfavoritoShown] = useState<string | null>(null)
   const [superfavoritoModal, setSuperfavoritoModal] = useState<Product | null>(null)
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
   const logoSrc = "/logoicebuin.jpg"
 
-  // Cargar productos desde localStorage o usar mockProducts
-  const products = useMemo(() => {
-    if (typeof window === 'undefined') return mockProducts
-    
-    const stored = localStorage.getItem('ice_buin_products')
-    if (stored) {
-      try {
-        return JSON.parse(stored) as Product[]
-      } catch {
-        return mockProducts
+  // Cargar productos desde API, con fallback a localStorage o mockProducts
+  useEffect(() => {
+    async function loadProducts() {
+      setLoading(true)
+      
+      // Intentar obtener desde API
+      const apiProducts = await getAllProducts()
+      
+      if (apiProducts.length > 0) {
+        setProducts(apiProducts)
+        // Guardar en localStorage como backup
+        localStorage.setItem('ice_buin_products', JSON.stringify(apiProducts))
+      } else {
+        // Fallback a localStorage
+        const stored = localStorage.getItem('ice_buin_products')
+        if (stored) {
+          try {
+            setProducts(JSON.parse(stored))
+          } catch {
+            setProducts(mockProducts)
+          }
+        } else {
+          // Fallback final a mockProducts
+          setProducts(mockProducts)
+        }
       }
+      
+      setLoading(false)
     }
-    return mockProducts
+    
+    loadProducts()
   }, [])
 
   // Extraer categorías dinámicamente
@@ -436,7 +457,7 @@ function AdminPage() {
     setImagesCount(files ? files.length : 0)
   }
 
-  const processUpload = () => {
+  const processUpload = async () => {
     if (!excelFile) {
       setStatus("Sube un Excel primero.")
       return
@@ -449,9 +470,20 @@ function AdminPage() {
       setStatus("⚠️ Ninguna imagen subida. Los productos cargarán sin imágenes por ahora.")
     }
     
-    // Guardar productos en localStorage
-    localStorage.setItem('ice_buin_products', JSON.stringify(loadedProducts))
-    setStatus(`✓ ${loadedProducts.length} productos guardados! Recarga la página para verlos.`)
+    setStatus("Guardando productos en la base de datos...")
+    
+    // Intenta subir a la API, si falla guarda en localStorage como backup
+    const success = await uploadProductsFromExcel(loadedProducts)
+    
+    if (success) {
+      // También guardar en localStorage como backup
+      localStorage.setItem('ice_buin_products', JSON.stringify(loadedProducts))
+      setStatus(`✓ ${loadedProducts.length} productos guardados en la base de datos! Recarga la página para verlos.`)
+    } else {
+      // Si falla la API, guardar al menos en localStorage
+      localStorage.setItem('ice_buin_products', JSON.stringify(loadedProducts))
+      setStatus(`⚠️ Error al guardar en BD. Guardados en localStorage como backup. ${loadedProducts.length} productos disponibles.`)
+    }
   }
 
   return (
