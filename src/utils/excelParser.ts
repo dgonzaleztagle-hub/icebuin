@@ -39,18 +39,24 @@ export function parseExcelFile(file: File): Promise<Product[]> {
           precioUnit: headers.findIndex(h => h && h.toLowerCase().includes('precios')),
           precioMayor: headers.findIndex(h => h && h.toLowerCase().includes('mayor ')),
           umbralMayor: headers.findIndex(h => h && h.toLowerCase().includes('precio mayor desde')),
-          sku: headers.findIndex(h => h && h.toUpperCase() === 'SKU'),
+          sku: headers.findIndex(h => h && (h.toUpperCase() === 'SKU' || h.toLowerCase() === 'sku')), // Busca exactamente "SKU"
+          imagen: headers.findIndex(h => h && h.toUpperCase() === 'IMAGEN'),
         }
 
         console.log('Headers:', headers)
         console.log('Column indexes:', columnIndexes)
+
+        // Si no encuentra columna SKU por nombre, usa posición fija (columna H = índice 7)
+        const skuColumnIndex = columnIndexes.sku >= 0 ? columnIndexes.sku : 7;
+        
+        console.log('Using SKU column index:', skuColumnIndex)
 
         // Convertir filas a Products
         const products: Product[] = rows
           .slice(1) // Skip header
           .filter((row: any[]) => row && row[columnIndexes.nombre] && String(row[columnIndexes.nombre]).trim() !== '')
           .map((row: any[], index: number) => {
-            const sku = String(row[columnIndexes.sku] || index + 1)
+            const sku = String(row[skuColumnIndex] || index + 1).trim()
             const nombre = String(row[columnIndexes.nombre] || '').trim()
             const precioUnit = Number(row[columnIndexes.precioUnit]) || 0
             const precioMayor = row[columnIndexes.precioMayor] ? Number(row[columnIndexes.precioMayor]) : null
