@@ -92,19 +92,69 @@ export function parseExcelFile(file: File): Promise<Product[]> {
 export function detectCategory(productName: string): string {
   const name = productName.toLowerCase()
 
-  if (name.includes('papas') || name.includes('frita')) return 'papas'
-  if (name.includes('pollo') || name.includes('cubito') || name.includes('alitas')) return 'pollo'
-  if (name.includes('camarón') || name.includes('camaron') || name.includes('mariscos')) return 'mariscos'
-  if (name.includes('verdura') || name.includes('arvejas') || name.includes('choclo')) return 'verduras'
-  if (name.includes('helado') || name.includes('palito')) return 'helados'
-  if (name.includes('pizza')) return 'pizzas'
-  if (name.includes('fruta') || name.includes('frutilla')) return 'frutas'
-  if (name.includes('hamburguesa') || name.includes('surtido')) return 'vacuno'
-  if (name.includes('churrasco') || name.includes('lomito') || name.includes('carne molida') || name.includes('albóndiga')) return 'vacuno'
-  if (name.includes('chuleta') || name.includes('cerdo')) return 'cerdo'
-  if (name.includes('empanada')) return 'otros'
-  if (name.includes('pescado') || name.includes('salchicha')) return 'mariscos'
+  // VEGANO (primero para evitar que "hamburguesa de soya" se detecte como "vacuno")
+  if (name.includes('soya') || name.includes('garbanzo') || name.includes('poroto negro')) 
+    return 'vegano'
 
+  // VACUNO
+  if (name.includes('churrasco') || name.includes('lomito') || name.includes('carne molida') || 
+      name.includes('carne picada') || name.includes('albóndiga') || name.includes('albondiga') ||
+      name.includes('hamburguesa') || name.includes('hambuerguesa') || name.includes('surtido') || 
+      name.includes('estuche de hambuerguesa') || name.includes('estuche de hamburguesa') ||
+      name.includes('surtido mariscos')) 
+    return 'vacuno'
+  
+  // CERDO
+  if (name.includes('chuleta') || name.includes('cerdo') || name.includes('salchicha')) 
+    return 'cerdo'
+  
+  // POLLO
+  if (name.includes('pollo') || name.includes('cubito') || name.includes('alitas') || name.includes('suprema')) 
+    return 'pollo'
+  
+  // MARISCOS
+  if (name.includes('camarón') || name.includes('camaron') || name.includes('mariscos') || 
+      name.includes('pescado')) 
+    return 'mariscos'
+  
+  // PAPAS
+  if (name.includes('papas') || name.includes('frita') || name.includes('papa duquesa')) 
+    return 'papas'
+  
+  // HELADOS
+  if (name.includes('helado') || name.includes('palito') || name.includes('cassata') ||
+      name.includes('chomp') || name.includes('crazy') || name.includes('daknky') || 
+      name.includes('danky') || name.includes('kriko') || name.includes('mega') || 
+      name.includes('mustang') || name.includes('sanhe') || name.includes('savory') || 
+      name.includes('trululu') || name.includes('cola de tigre') || name.includes('paleta') ||
+      name.includes('fruti-fru') || name.includes('fru fruna') || name.includes('cremino') ||
+      name.includes('paleton') || name.includes('pala palito') || name.includes('brazuka') ||
+      name.includes('splash') || name.includes('choco fru') || name.includes('crocante') ||
+      name.includes('chiry fru')) 
+    return 'helados'
+  
+  // PIZZAS
+  if (name.includes('pizza')) 
+    return 'pizzas'
+  
+  // FRUTAS
+  if (name.includes('fruta') || name.includes('frutilla') || name.includes('maracuyá') || 
+      name.includes('maracuya') || name.includes('arándano') || name.includes('arandano') ||
+      name.includes('durazno') || name.includes('mango') || name.includes('piña') ||
+      name.includes('frutos del bosque') || name.includes('pulpa')) 
+    return 'frutas'
+  
+  // VERDURAS
+  if (name.includes('verdura') || name.includes('arvejas') || name.includes('arveja') ||
+      name.includes('choclo') || name.includes('edamame') || name.includes('ajo') || 
+      name.includes('cebolla') || name.includes('champi') || 
+      name.includes('zanahoria') || name.includes('esparrago') || name.includes('habas') || 
+      name.includes('mix de pimentones') || name.includes('poroto verde') || name.includes('primavera') || 
+      name.includes('sofrito') || name.includes('tortilla') || name.includes('zapallo') ||
+      name.includes('pasta choclo') || name.includes('ensalada jardinera')) 
+    return 'verduras'
+  
+  // Otros (default)
   return 'otros'
 }
 
