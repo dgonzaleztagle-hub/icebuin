@@ -1,3 +1,5 @@
+import { sql } from '@vercel/postgres';
+
 export default async function handler(req: any, res: any) {
   // Only allow POST requests
   if (req.method !== 'POST') {
