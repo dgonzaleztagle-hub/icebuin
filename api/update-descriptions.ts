@@ -19,21 +19,30 @@ export default async function handler(req: any, res: any) {
     // Update each description by SKU
     for (const item of descriptions) {
       try {
-        // Ensure SKU is padded to 3 digits
-        const skuPadded = item.sku.toString().padStart(3, '0');
+        // Try multiple SKU formats: original, padded, and uppercase
+        const skuOriginal = item.sku.toString();
+        const skuPadded = skuOriginal.padStart(3, '0');
+        const skuUppercase = skuOriginal.toUpperCase();
+        const skuPaddedUpper = skuPadded.toUpperCase();
         
-        // Update by SKU match - try both quoted and unquoted
+        // Update by SKU match - flexible search to find the product regardless of format
         const result = await sql`
           UPDATE products 
           SET descripcion = ${item.descripcion}
-          WHERE sku = ${skuPadded}
+          WHERE 
+            sku = ${skuOriginal} 
+            OR sku = ${skuPadded} 
+            OR LOWER(sku) = LOWER(${skuOriginal})
+            OR LOWER(sku) = LOWER(${skuPadded})
           RETURNING sku
         `;
         
         if (result.rows.length > 0) {
           updated++;
+          console.log(`Updated SKU ${item.sku} (found as: ${result.rows[0].sku})`);
         } else {
           failed++;
+          console.warn(`No match found for SKU: ${item.sku}`);
         }
       } catch (error: any) {
         console.error(`Error updating SKU ${item.sku}:`, error.message);
