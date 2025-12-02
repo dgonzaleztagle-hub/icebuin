@@ -1,10 +1,7 @@
 {
-  "root": "web",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "devCommand": "npm run dev",
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "installCommand": "npm install"
+  "projects": {
+    "default": {
+      "rootDirectory": "web"
+    }
+  }
 }
