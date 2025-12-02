@@ -1,6 +1,8 @@
 import * as XLSX from 'xlsx'
 import type { Product } from '../data/mockProducts'
 
+export type { Product }
+
 /**
  * Parsea un archivo Excel y convierte las filas en objetos Product
  */

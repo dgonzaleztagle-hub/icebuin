@@ -11,6 +11,7 @@
     "db:init": "tsx scripts/init-db.ts"
   },
   "dependencies": {
+    "@vercel/node": "^5.5.13",
     "@vercel/postgres": "^0.10.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
