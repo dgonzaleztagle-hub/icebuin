@@ -39,13 +39,6 @@ function ProductCard({
 
 function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
   const hasMayorista = product.precioMayor && product.precioMayor > 0
-  
-  // Buscar archivo de imagen por SKU
-  const getImagePath = (sku: string) => {
-    const skuNum = parseInt(sku)
-    const imageName = `SKU${String(skuNum).padStart(4, '0')}`
-    return `/api/image/${imageName}`
-  }
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-4">
