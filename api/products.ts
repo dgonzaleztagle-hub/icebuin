@@ -23,7 +23,23 @@ export default async function handler(
     if (request.method === 'GET') {
       // GET all products
       const { rows } = await sql`SELECT * FROM products ORDER BY nombre ASC`;
-      response.status(200).json(rows);
+      
+      // Transform column names from lowercase to camelCase
+      const transformedRows = rows.map((row: any) => ({
+        sku: row.sku,
+        nombre: row.nombre,
+        categoria: row.categoria,
+        precioUnit: parseFloat(row.preciounit),
+        precioMayor: row.preciomayor ? parseFloat(row.preciomayor) : null,
+        umbralMayor: row.umbralmayor,
+        favorito: row.favorito,
+        superfavorito: row.superfavorito,
+        visible: row.visible,
+        created_at: row.created_at,
+        updated_at: row.updated_at,
+      }));
+      
+      response.status(200).json(transformedRows);
     } else if (request.method === 'POST') {
       // POST bulk insert products
       const products = request.body;
