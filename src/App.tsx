@@ -3,8 +3,6 @@ import { useMemo, useState, type ChangeEvent } from "react"
 import { mockProducts, type Product } from "./data/mockProducts"
 import { parseExcelFile, processProducts } from "./utils/excelParser"
 
-const categories = ["todos", "vacuno", "pollo", "cerdo", "mariscos", "verduras", "papas", "helados", "pizzas", "frutas", "otros"]
-
 function ProductCard({
   product,
   onSelect,

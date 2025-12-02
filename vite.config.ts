@@ -13,8 +13,8 @@ export default defineConfig({
     {
       name: 'image-resolver',
       configureServer(server) {
-        server.middlewares.use('/api/image/', (req, res, next) => {
-          const url = new URL(req.originalUrl || req.url, `http://${req.headers.host}`)
+        server.middlewares.use('/api/image/', (req, res) => {
+          const url = new URL((req.originalUrl || req.url) ?? '', `http://${req.headers.host ?? 'localhost'}`)
           const imageName = url.pathname.split('/api/image/')[1]
 
           if (!imageName) {
