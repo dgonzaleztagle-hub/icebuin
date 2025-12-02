@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
-import { useMemo, useState, type ChangeEvent } from "react"
+import { useMemo, useState, type ChangeEvent, useEffect } from "react"
 import { mockProducts, type Product } from "./data/mockProducts"
 import { parseExcelFile, processProducts } from "./utils/excelParser"
 import { getImagePath } from "./utils/imageLoader"
@@ -106,6 +106,88 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
   )
 }
 
+function SuperfavoritoModal({ product, onClose }: { product: Product | null; onClose: () => void }) {
+  if (!product) return null
+
+  return (
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-4">
+      <div className="w-full max-w-md bg-modal-bg rounded-2xl shadow-glow-strong border border-white/8 overflow-hidden relative animate-shake">
+        {/* Degradado de fondo */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f442ff]/5 to-[#4ef3ff]/5 pointer-events-none" />
+        
+        {/* Header con botón cerrar */}
+        <div className="relative flex justify-between items-center p-4 border-b border-white/10">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">⭐</span>
+            <h3 className="text-lg font-bold bg-gradient-to-r from-[#f442ff] to-[#4ef3ff] bg-clip-text text-transparent">
+              SUPER FAVORITO
+            </h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="text-white/60 hover:text-white transition w-6 h-6 flex items-center justify-center rounded hover:bg-white/10"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Imagen del producto - más grande */}
+        <div className="relative overflow-hidden h-80 w-full">
+          <img
+            src={getImagePath(product.sku)}
+            alt={product.nombre}
+            className="h-full w-full object-contain object-center bg-white"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23ffffff" width="400" height="300"/%3E%3C/svg%3E'
+            }}
+          />
+          {/* Degradado oscuro sobre la imagen */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b12] to-transparent" />
+        </div>
+
+        {/* Contenido */}
+        <div className="p-6 flex flex-col gap-4 relative">
+          <h2 className="text-2xl font-bold text-center text-white font-display">{product.nombre}</h2>
+          
+          <div className="space-y-3">
+            <div className="rounded-lg border-2 border-[#f442ff]/30 bg-[#f442ff]/5 p-5 text-center transform hover:scale-105 transition-transform cursor-pointer">
+              <div className="text-white/60 text-xs uppercase tracking-wide mb-3 flex items-center justify-center gap-2">
+                <span>🛒</span>
+                <span>Precio Individual</span>
+              </div>
+              <div className="text-3xl font-extrabold text-[#f442ff] drop-shadow-[0_0_10px_rgba(244,66,255,0.5)]">
+                ${product.precioUnit.toLocaleString("es-CL")}
+              </div>
+            </div>
+
+            {product.precioMayor && product.precioMayor > 0 && (
+              <div className="rounded-lg border-2 border-[#4ef3ff]/30 bg-[#4ef3ff]/5 p-5 text-center">
+                <div className="text-white/60 text-xs uppercase tracking-wide mb-3 flex items-center justify-center gap-2">
+                  <span>📦</span>
+                  <span>Precio Mayorista</span>
+                </div>
+                <div className="text-3xl font-extrabold text-[#4ef3ff] drop-shadow-[0_0_10px_rgba(78,243,255,0.5)]">
+                  ${product.precioMayor.toLocaleString("es-CL")}
+                </div>
+                {product.umbralMayor && (
+                  <div className="text-xs text-white/50 mt-2">{product.umbralMayor}</div>
+                )}
+              </div>
+            )}
+          </div>
+
+          <button
+            onClick={onClose}
+            className="w-full py-3 bg-gradient-to-r from-[#f442ff] to-[#4ef3ff] text-[#0a0a10] font-bold rounded-lg hover:opacity-90 transition"
+          >
+            Ver catálogo
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function CategoryMenu({
   selected,
   onChange,
@@ -141,6 +223,8 @@ function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState("todos")
   const [search, setSearch] = useState("")
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [superfavoritoShown, setSuperfavoritoShown] = useState<string | null>(null)
+  const [superfavoritoModal, setSuperfavoritoModal] = useState<Product | null>(null)
   const logoSrc = "/logoicebuin.jpg"
 
   // Cargar productos desde localStorage o usar mockProducts
@@ -181,6 +265,21 @@ function HomePage() {
   }, [filtered])
 
   const destacados = ordered.slice(0, 5)
+
+  // Mostrar superfavorito cuando cambia la categoría
+  useEffect(() => {
+    const superfav = ordered.find(p => p.superfavorito)
+    const categoryKey = `superfav_shown_${selectedCategory}`
+    
+    if (superfav && !superfavoritoShown) {
+      const hasBeenShown = sessionStorage.getItem(categoryKey)
+      if (!hasBeenShown) {
+        setSuperfavoritoModal(superfav)
+        sessionStorage.setItem(categoryKey, 'true')
+        setSuperfavoritoShown(categoryKey)
+      }
+    }
+  }, [selectedCategory, ordered, superfavoritoShown])
 
   return (
     <div className="min-h-screen text-white">
@@ -264,7 +363,7 @@ function HomePage() {
           <h2 className="text-2xl font-bold text-white">Productos Destacados</h2>
           <div className="text-white/60 text-sm">Favoritos primero</div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className={`grid gap-4 ${destacados.length < 5 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'}`}>
           {destacados.map((p) => (
             <ProductCard key={p.sku} product={p} onSelect={setSelectedProduct} />
           ))}
@@ -285,7 +384,7 @@ function HomePage() {
           </div>
         </div>
         <CategoryMenu selected={selectedCategory} onChange={setSelectedCategory} categories={availableCategories} />
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+        <div className={`grid gap-4 mt-6 ${ordered.length > 0 && ordered.length < 5 ? 'sm:grid-cols-2 md:grid-cols-3 justify-items-center' : 'sm:grid-cols-2 md:grid-cols-3'}`}>
           {ordered.map((p) => (
             <ProductCard key={p.sku} product={p} onSelect={setSelectedProduct} />
           ))}
@@ -304,6 +403,7 @@ function HomePage() {
       </section>
 
       {selectedProduct && <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />}
+      {superfavoritoModal && <SuperfavoritoModal product={superfavoritoModal} onClose={() => setSuperfavoritoModal(null)} />}
     </div>
   )
 }
