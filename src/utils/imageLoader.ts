@@ -1,11 +1,11 @@
 // Mapa de imágenes disponibles en /public/images
-// Todas las imágenes están renombradas como SKU####.jpg
+// Todas las imágenes están normalizadas como sku####.jpg (minúscula)
 
 const imageFormats = ['.jpg', '.jpeg', '.png', '.webp', '.jfif', '.gif']
 
 export function getImagePath(sku: string): string {
   const skuNum = parseInt(sku)
-  const imageName = `SKU${String(skuNum).padStart(4, '0')}`
+  const imageName = `sku${String(skuNum).padStart(4, '0')}`
   
   // Sirve directamente desde /public/images
   return `/images/${imageName}.jpg`
@@ -14,7 +14,7 @@ export function getImagePath(sku: string): string {
 // Verifica si una imagen existe (para fallbacks)
 export async function findImagePath(sku: string): Promise<string | null> {
   const skuNum = parseInt(sku)
-  const imageName = `SKU${String(skuNum).padStart(4, '0')}`
+  const imageName = `sku${String(skuNum).padStart(4, '0')}`
   
   // Intenta primero con .jpg (nombre estándar)
   try {
