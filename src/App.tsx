@@ -230,33 +230,17 @@ function HomePage() {
   const [loading, setLoading] = useState(true)
   const logoSrc = "/logoicebuin.jpg"
 
-  // Cargar productos desde API, con fallback a localStorage o mockProducts
+  // Cargar productos desde API (BD en Vercel)
   useEffect(() => {
     async function loadProducts() {
       setLoading(true)
-      
-      // Intentar obtener desde API
-      const apiProducts = await getAllProducts()
-      
-      if (apiProducts.length > 0) {
+      try {
+        const apiProducts = await getAllProducts()
         setProducts(apiProducts)
-        // Guardar en localStorage como backup
-        localStorage.setItem('ice_buin_products', JSON.stringify(apiProducts))
-      } else {
-        // Fallback a localStorage
-        const stored = localStorage.getItem('ice_buin_products')
-        if (stored) {
-          try {
-            setProducts(JSON.parse(stored))
-          } catch {
-            setProducts(mockProducts)
-          }
-        } else {
-          // Fallback final a mockProducts
-          setProducts(mockProducts)
-        }
+      } catch (error) {
+        console.error('Failed to load products:', error)
+        setProducts([])
       }
-      
       setLoading(false)
     }
     
@@ -476,17 +460,16 @@ function AdminPage() {
     
     setStatus("Guardando productos en la base de datos...")
     
-    // Intenta subir a la API, si falla guarda en localStorage como backup
-    const success = await uploadProductsFromExcel(loadedProducts)
-    
-    if (success) {
-      // También guardar en localStorage como backup
-      localStorage.setItem('ice_buin_products', JSON.stringify(loadedProducts))
-      setStatus(`✓ ${loadedProducts.length} productos guardados en la base de datos! Recarga la página para verlos.`)
-    } else {
-      // Si falla la API, guardar al menos en localStorage
-      localStorage.setItem('ice_buin_products', JSON.stringify(loadedProducts))
-      setStatus(`⚠️ Error al guardar en BD. Guardados en localStorage como backup. ${loadedProducts.length} productos disponibles.`)
+    try {
+      const success = await uploadProductsFromExcel(loadedProducts)
+      
+      if (success) {
+        setStatus(`✓ ${loadedProducts.length} productos guardados en BD correctamente! Recarga la página.`)
+      } else {
+        setStatus(`✗ Error: No se pudieron guardar los productos en la BD.`)
+      }
+    } catch (error) {
+      setStatus(`✗ Error: ${error instanceof Error ? error.message : 'Error desconocido'}`)
     }
   }
 

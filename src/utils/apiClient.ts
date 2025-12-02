@@ -8,13 +8,13 @@ export async function getAllProducts(): Promise<Product[]> {
   try {
     const response = await fetch(`${API_BASE}/products`);
     if (!response.ok) {
-      console.error('Failed to fetch products from API');
-      return [];
+      throw new Error(`API error: ${response.status}`);
     }
-    return response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
-    console.error('Error fetching products:', error);
-    return [];
+    console.error('Error fetching products from API:', error);
+    throw error;
   }
 }
 
