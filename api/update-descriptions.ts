@@ -19,30 +19,23 @@ export default async function handler(req: any, res: any) {
     // Update each description by SKU
     for (const item of descriptions) {
       try {
-        // Try multiple SKU formats: original, padded, and uppercase
+        // SKUs are stored as strings WITHOUT padding (e.g., "1", "10", "100")
         const skuOriginal = item.sku.toString();
-        const skuPadded = skuOriginal.padStart(3, '0');
-        const skuUppercase = skuOriginal.toUpperCase();
-        const skuPaddedUpper = skuPadded.toUpperCase();
         
-        // Update by SKU match - flexible search to find the product regardless of format
+        // Update by exact SKU match
         const result = await sql`
           UPDATE products 
           SET descripcion = ${item.descripcion}
-          WHERE 
-            sku = ${skuOriginal} 
-            OR sku = ${skuPadded} 
-            OR LOWER(sku) = LOWER(${skuOriginal})
-            OR LOWER(sku) = LOWER(${skuPadded})
+          WHERE sku = ${skuOriginal}
           RETURNING sku
         `;
         
         if (result.rows.length > 0) {
           updated++;
-          console.log(`Updated SKU ${item.sku} (found as: ${result.rows[0].sku})`);
+          console.log(`✓ Updated SKU ${item.sku}: ${item.nombre}`);
         } else {
           failed++;
-          console.warn(`No match found for SKU: ${item.sku}`);
+          console.warn(`✗ No match found for SKU: ${item.sku} (${item.nombre})`);
         }
       } catch (error: any) {
         console.error(`Error updating SKU ${item.sku}:`, error.message);
