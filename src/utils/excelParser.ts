@@ -39,7 +39,7 @@ export function parseExcelFile(file: File): Promise<Product[]> {
           precioUnit: headers.findIndex(h => h && h.toLowerCase().includes('precios')),
           precioMayor: headers.findIndex(h => h && h.toLowerCase().includes('mayor ')),
           umbralMayor: headers.findIndex(h => h && h.toLowerCase().includes('precio mayor desde')),
-          sku: headers.findIndex(h => h && h.toLowerCase().includes('sku')),
+          sku: headers.findIndex(h => h && h.toUpperCase() === 'SKU'),
         }
 
         console.log('Headers:', headers)
