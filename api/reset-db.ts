@@ -10,7 +10,6 @@ export default async function handler(
     return;
   }
 
-  // Simple auth check - in production use proper authentication
   const authHeader = request.headers.authorization;
   const expectedToken = process.env.INIT_TOKEN;
   
@@ -20,11 +19,14 @@ export default async function handler(
   }
 
   try {
-    console.log('Initializing database...');
+    console.log('Dropping and recreating products table...');
     
-    // Create table if not exists
+    // Drop existing table
+    await sql`DROP TABLE IF EXISTS products`;
+    
+    // Create table with corrected schema
     await sql`
-      CREATE TABLE IF NOT EXISTS products (
+      CREATE TABLE products (
         sku VARCHAR(50) PRIMARY KEY,
         nombre VARCHAR(255) NOT NULL,
         categoria VARCHAR(100) NOT NULL,
@@ -40,36 +42,17 @@ export default async function handler(
     `;
     
     // Create indexes
-    await sql`
-      CREATE INDEX IF NOT EXISTS idx_categoria ON products(categoria);
-    `;
-    
-    await sql`
-      CREATE INDEX IF NOT EXISTS idx_visible ON products(visible);
-    `;
-    
-    // Check table exists
-    const tableCheck = await sql`
-      SELECT EXISTS (
-        SELECT FROM information_schema.tables 
-        WHERE table_name = 'products'
-      );
-    `;
-    
-    // Count rows
-    const countResult = await sql`SELECT COUNT(*) as count FROM products;`;
-    const count = (countResult.rows[0] as { count: string }).count;
+    await sql`CREATE INDEX idx_categoria ON products(categoria);`;
+    await sql`CREATE INDEX idx_visible ON products(visible);`;
     
     response.status(200).json({
-      message: 'Database initialized successfully',
-      tableExists: tableCheck.rows[0],
-      productCount: count,
+      message: 'Database table recreated successfully with corrected schema',
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error('Database initialization error:', error);
+    console.error('Database recreation error:', error);
     response.status(500).json({
-      error: 'Database initialization failed',
+      error: 'Database recreation failed',
       details: error instanceof Error ? error.message : String(error)
     });
   }
