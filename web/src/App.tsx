@@ -2,8 +2,7 @@ import { BrowserRouter, Route, Routes, Link, useNavigate } from "react-router-do
 import { useMemo, useState, type ChangeEvent } from "react"
 import { mockProducts, type Product } from "./data/mockProducts"
 import { parseExcelFile, processProducts } from "./utils/excelParser"
-
-const categories = ["todos", "vacuno", "pollo", "cerdo", "mariscos", "verduras", "papas", "helados", "pizzas", "frutas", "otros"]
+import { getImagePath } from "./utils/imageLoader"
 
 function ProductCard({
   product,
@@ -12,14 +11,6 @@ function ProductCard({
   product: Product
   onSelect: (p: Product) => void
 }) {
-  // Buscar archivo de imagen por SKU
-  const getImagePath = (sku: string) => {
-    const skuNum = parseInt(sku)
-    // Los archivos tienen SKU0001, SKU0002, etc
-    const imageName = `SKU${String(skuNum).padStart(4, '0')}`
-    return `/api/image/${imageName}`
-  }
-
   return (
     <div
       className="group relative overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 cursor-pointer hover:border-[#f442ff] hover:shadow-[0_0_20px_rgba(244,66,255,0.3)]"
