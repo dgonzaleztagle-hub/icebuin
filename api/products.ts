@@ -44,30 +44,51 @@ export default async function handler(
       // POST bulk insert or update products (UPSERT)
       const products = request.body;
       
+      console.log('[POST /api/products] Received payload:', {
+        isArray: Array.isArray(products),
+        length: Array.isArray(products) ? products.length : 'N/A',
+        firstProduct: Array.isArray(products) && products.length > 0 ? products[0] : null,
+      });
+      
       if (!Array.isArray(products)) {
+        console.error('[POST /api/products] ERROR: Body is not an array!');
         response.status(400).json({ error: 'Expected array of products' });
         return;
       }
 
       // Insert or update products (preserve existing if not in upload)
+      let upsertCount = 0;
+      let errorCount = 0;
+      
       for (const product of products) {
-        await sql`
-          INSERT INTO products (sku, nombre, categoria, preciounit, preciomayor, umbralmayor, favorito, superfavorito, visible, updated_at)
-          VALUES (${product.sku}, ${product.nombre}, ${product.categoria}, ${product.precioUnit}, ${product.precioMayor}, ${product.umbralMayor}, ${product.favorito || false}, ${product.superfavorito || false}, ${product.visible !== false}, NOW())
-          ON CONFLICT (sku) DO UPDATE SET
-            nombre = EXCLUDED.nombre,
-            categoria = EXCLUDED.categoria,
-            preciounit = EXCLUDED.preciounit,
-            preciomayor = EXCLUDED.preciomayor,
-            umbralmayor = EXCLUDED.umbralmayor,
-            favorito = EXCLUDED.favorito,
-            superfavorito = EXCLUDED.superfavorito,
-            visible = EXCLUDED.visible,
-            updated_at = NOW()
-        `;
+        try {
+          await sql`
+            INSERT INTO products (sku, nombre, categoria, preciounit, preciomayor, umbralmayor, favorito, superfavorito, visible, updated_at)
+            VALUES (${product.sku}, ${product.nombre}, ${product.categoria}, ${product.precioUnit}, ${product.precioMayor}, ${product.umbralMayor}, ${product.favorito || false}, ${product.superfavorito || false}, ${product.visible !== false}, NOW())
+            ON CONFLICT (sku) DO UPDATE SET
+              nombre = EXCLUDED.nombre,
+              categoria = EXCLUDED.categoria,
+              preciounit = EXCLUDED.preciounit,
+              preciomayor = EXCLUDED.preciomayor,
+              umbralmayor = EXCLUDED.umbralmayor,
+              favorito = EXCLUDED.favorito,
+              superfavorito = EXCLUDED.superfavorito,
+              visible = EXCLUDED.visible,
+              updated_at = NOW()
+          `;
+          upsertCount++;
+        } catch (insertError) {
+          errorCount++;
+          console.error(`[POST /api/products] Error upserting product ${product.sku}:`, insertError);
+        }
       }
 
-      response.status(201).json({ message: `${products.length} products upserted` });
+      console.log(`[POST /api/products] Completed: ${upsertCount} upserted, ${errorCount} errors`);
+      response.status(201).json({ 
+        message: `${upsertCount} products upserted, ${errorCount} errors`,
+        upserted: upsertCount,
+        errors: errorCount,
+      });
     } else if (request.method === 'PUT') {
       // PUT update single product
       const { sku, ...updateData } = request.body;
