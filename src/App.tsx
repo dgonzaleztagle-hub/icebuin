@@ -384,10 +384,12 @@ function HomePage() {
           <h2 className="text-2xl font-bold text-white">Productos Destacados</h2>
           <div className="text-white/60 text-sm">Favoritos primero</div>
         </div>
-        <div className={`grid gap-4 ${destacados.length < 5 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'}`}>
-          {destacados.map((p) => (
-            <ProductCard key={p.sku} product={p} onSelect={setSelectedProduct} />
-          ))}
+        <div className={`flex ${destacados.length > 0 && destacados.length < 5 ? 'justify-center' : ''}`}>
+          <div className={`grid gap-4 ${destacados.length < 5 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'}`}>
+            {destacados.map((p) => (
+              <ProductCard key={p.sku} product={p} onSelect={setSelectedProduct} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -405,13 +407,15 @@ function HomePage() {
           </div>
         </div>
         <CategoryMenu selected={selectedCategory} onChange={setSelectedCategory} categories={availableCategories} />
-        <div className={`grid gap-4 mt-6 ${ordered.length > 0 && ordered.length < 5 ? 'sm:grid-cols-2 md:grid-cols-3 justify-items-center' : 'sm:grid-cols-2 md:grid-cols-3'}`}>
-          {ordered.map((p) => (
-            <ProductCard key={p.sku} product={p} onSelect={setSelectedProduct} />
-          ))}
-          {!ordered.length && (
-            <div className="text-white/60 text-sm col-span-full text-center py-10">Sin resultados</div>
-          )}
+        <div className={`flex ${ordered.length > 0 && ordered.length < 5 ? 'justify-center' : ''}`}>
+          <div className={`grid gap-4 mt-6 sm:grid-cols-2 md:grid-cols-3`}>
+            {ordered.map((p) => (
+              <ProductCard key={p.sku} product={p} onSelect={setSelectedProduct} />
+            ))}
+            {!ordered.length && (
+              <div className="text-white/60 text-sm col-span-full text-center py-10">Sin resultados</div>
+            )}
+          </div>
         </div>
       </section>
 
