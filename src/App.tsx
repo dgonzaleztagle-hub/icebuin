@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Routes, Link, useNavigate } from "react-router-dom"
-import { useMemo, useState, type ChangeEvent } from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { useMemo, useState } from "react"
 import { mockProducts, type Product } from "./data/mockProducts"
-import { parseExcelFile, processProducts } from "./utils/excelParser"
+import { getImagePath } from "./utils/imageLoader"
 
 function ProductCard({
   product,
@@ -10,14 +10,6 @@ function ProductCard({
   product: Product
   onSelect: (p: Product) => void
 }) {
-  // Buscar archivo de imagen por SKU
-  const getImagePath = (sku: string) => {
-    const skuNum = parseInt(sku)
-    // Los archivos tienen SKU0001, SKU0002, etc
-    const imageName = `SKU${String(skuNum).padStart(4, '0')}`
-    return `/api/image/${imageName}`
-  }
-
   return (
     <div
       className="group relative overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 cursor-pointer hover:border-[#f442ff] hover:shadow-[0_0_20px_rgba(244,66,255,0.3)]"
@@ -227,12 +219,6 @@ function HomePage() {
               Visítanos
             </a>
           </nav>
-          <Link
-            to="/mododios"
-            className="text-xs text-white/60 hover:text-white border border-white/10 px-3 py-2 rounded-full"
-          >
-            /mododios
-          </Link>
         </header>
 
         <section className="relative overflow-hidden border-b border-border/50">
@@ -328,182 +314,12 @@ function HomePage() {
   )
 }
 
-function AdminPage() {
-  const [excelFile, setExcelFile] = useState<File | null>(null)
-  const [imagesCount, setImagesCount] = useState<number>(0)
-  const [status, setStatus] = useState<string>("")
-  const [loadedProducts, setLoadedProducts] = useState<Product[]>([])
-  const navigate = useNavigate()
-
-  const handleExcel = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      setExcelFile(file)
-      setStatus("Leyendo Excel...")
-      try {
-        const products = await parseExcelFile(file)
-        const processedProducts = processProducts(products)
-        setLoadedProducts(processedProducts)
-        setStatus(`✓ ${processedProducts.length} productos cargados correctamente`)
-      } catch (error) {
-        setStatus(`✗ Error: ${error instanceof Error ? error.message : "Error desconocido"}`)
-      }
-    }
-  }
-
-  const handleImages = (e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
-    setImagesCount(files ? files.length : 0)
-  }
-
-  const processUpload = () => {
-    if (!excelFile) {
-      setStatus("Sube un Excel primero.")
-      return
-    }
-    if (loadedProducts.length === 0) {
-      setStatus("Procesa el Excel primero (presiona nuevamente después de seleccionar).")
-      return
-    }
-    if (imagesCount === 0) {
-      setStatus("⚠️ Ninguna imagen subida. Los productos cargarán sin imágenes por ahora.")
-    }
-    
-    // Guardar productos en localStorage
-    localStorage.setItem('ice_buin_products', JSON.stringify(loadedProducts))
-    setStatus(`✓ ${loadedProducts.length} productos guardados! Recarga la página para verlos.`)
-  }
-
-  return (
-    <div className="min-h-screen text-white bg-hero-gradient px-4">
-      <div className="max-w-4xl mx-auto py-10">
-        <div className="flex justify-between items-center mb-6">
-          <div>
-            <h1 className="text-3xl font-bold">Modo Dios</h1>
-            <p className="text-white/70">Importa Excel y actualiza productos automáticamente.</p>
-          </div>
-          <button
-            onClick={() => navigate("/")}
-            className="px-3 py-2 rounded-full border border-white/15 text-white/80 hover:text-white hover:border-white/40"
-          >
-            ← Volver
-          </button>
-        </div>
-
-        <div className="glass rounded-2xl p-6 border border-white/10">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <div className="text-lg font-semibold">Importar Catálogo</div>
-              <div className="text-white/60 text-sm">Sube Excel con productos y imágenes.</div>
-            </div>
-            <a
-              href="/PRECIOS.xlsx"
-              className="text-sm text-[#4ef3ff] hover:underline"
-              download
-            >
-              Descargar ejemplo
-            </a>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <label className="flex flex-col gap-2">
-              <span className="text-sm text-white/80">Archivo Excel (.xlsx)</span>
-              <input
-                type="file"
-                accept=".xlsx"
-                onChange={handleExcel}
-                className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm"
-              />
-              {excelFile && <span className="text-xs text-white/60">Archivo: {excelFile.name}</span>}
-            </label>
-
-            <label className="flex flex-col gap-2">
-              <span className="text-sm text-white/80">Imágenes (.jpg, múltiples)</span>
-              <input
-                type="file"
-                accept=".jpg"
-                multiple
-                onChange={handleImages}
-                className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm"
-              />
-              {imagesCount > 0 && (
-                <span className="text-xs text-white/60">{imagesCount} imágenes seleccionadas</span>
-              )}
-            </label>
-
-            <div className="bg-white/5 border border-white/10 rounded-lg p-4 mt-2">
-              <div className="text-xs text-white/70 mb-3">
-                <strong>Productos cargados:</strong> {loadedProducts.length}
-              </div>
-              {loadedProducts.length > 0 && (
-                <div className="max-h-40 overflow-y-auto">
-                  <div className="text-xs space-y-1">
-                    {loadedProducts.slice(0, 5).map((p) => (
-                      <div key={p.sku} className="text-white/60">
-                        {p.nombre} - ${p.precioUnit}
-                      </div>
-                    ))}
-                    {loadedProducts.length > 5 && (
-                      <div className="text-white/50 italic">
-                        ... y {loadedProducts.length - 5} más
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <button
-              onClick={processUpload}
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-[#f442ff] to-[#4ef3ff] text-[#0a0a10] font-semibold shadow-glow hover:opacity-90 transition"
-            >
-              Guardar Productos
-            </button>
-
-            {status && (
-              <div
-                className={`text-sm p-3 rounded-lg ${
-                  status.includes("✓")
-                    ? "bg-green-500/20 text-green-300 border border-green-500/40"
-                    : status.includes("✗")
-                      ? "bg-red-500/20 text-red-300 border border-red-500/40"
-                      : "bg-yellow-500/20 text-yellow-300 border border-yellow-500/40"
-                }`}
-              >
-                {status}
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className="mt-6 glass rounded-2xl p-6 border border-white/10">
-          <div className="text-sm text-white/70">
-            <p className="mb-2">
-              <strong>Instrucciones:</strong>
-            </p>
-            <ul className="list-disc list-inside space-y-1 text-xs">
-              <li>Descarga el ejemplo o usa tu Excel con la estructura correcta</li>
-              <li>Selecciona el archivo Excel con los productos</li>
-              <li>(Opcional) Sube las imágenes .jpg correspondientes</li>
-              <li>Haz clic en "Guardar Productos"</li>
-              <li>Recarga la página principal para ver los cambios</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/mododios" element={<AdminPage />} />
       </Routes>
     </BrowserRouter>
   )
 }
-
-export default App

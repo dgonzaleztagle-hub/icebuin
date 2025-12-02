@@ -13,11 +13,11 @@ export default defineConfig({
     {
       name: 'image-resolver',
       configureServer(server) {
-        server.middlewares.use('/api/image/', (req, res) => {
+        server.middlewares.use('/api/image', (req, res) => {
           const url = new URL((req.originalUrl || req.url) ?? '', `http://${req.headers.host ?? 'localhost'}`)
-          const imageName = url.pathname.split('/api/image/')[1]
+          const sku = url.searchParams.get('sku') || url.pathname.split('/api/image/')[1]
 
-          if (!imageName) {
+          if (!sku) {
             res.statusCode = 404
             res.end('Not found')
             return
@@ -28,7 +28,7 @@ export default defineConfig({
           try {
             const files = fs.readdirSync(imagesDir)
             const foundFile = files.find(f =>
-              f.toLowerCase().includes(imageName.toLowerCase())
+              f.toLowerCase().includes(sku.toLowerCase())
             )
 
             if (foundFile) {
@@ -49,7 +49,7 @@ export default defineConfig({
               console.log(`✓ Image served: ${foundFile}`)
               res.end(fileContent)
             } else {
-              console.log(`✗ Image not found: ${imageName} in ${files.slice(0, 5).join(', ')}...`)
+              console.log(`✗ Image not found: ${sku} in ${files.slice(0, 5).join(', ')}...`)
               res.statusCode = 404
               res.end('Not found')
             }
