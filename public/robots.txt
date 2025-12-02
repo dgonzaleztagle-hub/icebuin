@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /mododios
+
+# Sitemaps
+Sitemap: https://icebuin.vercel.app/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
