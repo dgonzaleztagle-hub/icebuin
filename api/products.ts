@@ -41,7 +41,7 @@ export default async function handler(
       
       response.status(200).json(transformedRows);
     } else if (request.method === 'POST') {
-      // POST bulk insert products
+      // POST bulk insert or update products (UPSERT)
       const products = request.body;
       
       if (!Array.isArray(products)) {
@@ -49,18 +49,25 @@ export default async function handler(
         return;
       }
 
-      // Delete existing products first
-      await sql`DELETE FROM products`;
-
-      // Insert new products
+      // Insert or update products (preserve existing if not in upload)
       for (const product of products) {
         await sql`
-          INSERT INTO products (sku, nombre, categoria, precioUnit, precioMayor, umbralMayor, favorito, superfavorito, visible)
-          VALUES (${product.sku}, ${product.nombre}, ${product.categoria}, ${product.precioUnit}, ${product.precioMayor}, ${product.umbralMayor}, ${product.favorito || false}, ${product.superfavorito || false}, ${product.visible !== false})
+          INSERT INTO products (sku, nombre, categoria, preciounit, preciomayor, umbralmayor, favorito, superfavorito, visible, updated_at)
+          VALUES (${product.sku}, ${product.nombre}, ${product.categoria}, ${product.precioUnit}, ${product.precioMayor}, ${product.umbralMayor}, ${product.favorito || false}, ${product.superfavorito || false}, ${product.visible !== false}, NOW())
+          ON CONFLICT (sku) DO UPDATE SET
+            nombre = EXCLUDED.nombre,
+            categoria = EXCLUDED.categoria,
+            preciounit = EXCLUDED.preciounit,
+            preciomayor = EXCLUDED.preciomayor,
+            umbralmayor = EXCLUDED.umbralmayor,
+            favorito = EXCLUDED.favorito,
+            superfavorito = EXCLUDED.superfavorito,
+            visible = EXCLUDED.visible,
+            updated_at = NOW()
         `;
       }
 
-      response.status(201).json({ message: `${products.length} products inserted` });
+      response.status(201).json({ message: `${products.length} products upserted` });
     } else if (request.method === 'PUT') {
       // PUT update single product
       const { sku, ...updateData } = request.body;
