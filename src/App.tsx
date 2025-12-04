@@ -113,82 +113,78 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
 
 function SuperfavoritoModal({ product, onClose }: { product: Product | null; onClose: () => void }) {
   if (!product) return null
+  
+  const hasMayorista = product.precioMayor && product.precioMayor > 0
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-      <div className="w-full max-w-sm bg-modal-bg rounded-2xl shadow-glow-strong border border-white/8 overflow-hidden relative modal-anim">
+      <div className="w-full max-w-sm bg-modal-bg rounded-2xl shadow-glow-strong border border-white/8 modal-anim overflow-hidden relative">
         {/* Degradado de fondo */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#f442ff]/5 to-[#4ef3ff]/5 pointer-events-none" />
         
-        {/* Header con botón cerrar */}
-        <div className="relative flex justify-between items-center p-4 border-b border-white/10">
-          <div className="flex items-center gap-2 flex-1">
-            <span className="text-xl">⭐</span>
-            <h3 className="text-base font-bold bg-gradient-to-r from-[#f442ff] to-[#4ef3ff] bg-clip-text text-transparent truncate">
-              SUPER FAVORITO
-            </h3>
-          </div>
-          <button
-            onClick={onClose}
-            className="text-white/60 hover:text-white transition w-6 h-6 flex items-center justify-center rounded hover:bg-white/10 flex-shrink-0"
-          >
-            ✕
-          </button>
-        </div>
-
-        {/* Imagen del producto - mismo tamaño que ProductModal */}
-        <div className="relative overflow-hidden h-48 w-full">
+        <div className="relative overflow-hidden">
           <img
             src={getImagePath(product.sku)}
-            alt={`${product.nombre} - SUPER FAVORITO - ${product.categoria} congelado`}
+            alt={`${product.nombre} - SUPER FAVORITO ⭐ - ${product.categoria} congelado - distribuidor mayorista`}
             title={product.nombre}
             loading="lazy"
-            className="h-full w-full object-contain object-center bg-white"
+            className="h-48 w-full object-contain object-center bg-white"
             onError={(e) => {
               (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23ffffff" width="400" height="300"/%3E%3C/svg%3E'
             }}
           />
           {/* Degradado oscuro sobre la imagen */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b12] to-transparent" />
+          {/* Botón cerrar sobre la imagen con badge de SUPER FAVORITO */}
+          <div className="absolute inset-0 flex flex-col justify-between p-4 pointer-events-none">
+            <div className="flex justify-end">
+              <button
+                onClick={onClose}
+                className="bg-black/60 hover:bg-black/80 text-white rounded-full w-8 h-8 flex items-center justify-center transition z-20 pointer-events-auto"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="flex justify-center">
+              <span className="text-3xl">⭐</span>
+            </div>
+          </div>
         </div>
 
-        {/* Contenido */}
-        <div className="p-5 flex flex-col gap-3 relative">
-          <h2 className="text-xl font-bold text-center text-white">{product.nombre}</h2>
-          
-          <div className="space-y-2">
-            <div className="rounded-lg border-2 border-[#f442ff]/30 bg-[#f442ff]/5 p-4 text-center">
-              <div className="text-white/60 text-xs uppercase tracking-wide mb-2 flex items-center justify-center gap-2">
+        <div className="p-6 flex flex-col gap-4 relative">
+          <h2 className="text-2xl font-bold text-center text-white font-display">{product.nombre}</h2>
+          <div className="space-y-3">
+            <div className="rounded-lg border-2 border-[#f442ff]/30 bg-[#f442ff]/5 p-5 text-center transform hover:scale-105 transition-transform cursor-pointer">
+              <div className="text-white/60 text-xs uppercase tracking-wide mb-3 flex items-center justify-center gap-2">
                 <span>🛒</span>
                 <span>Precio Individual</span>
               </div>
-              <div className="text-2xl font-extrabold text-[#f442ff] drop-shadow-[0_0_10px_rgba(244,66,255,0.5)]">
+              <div className="text-4xl font-extrabold text-[#f442ff] drop-shadow-[0_0_10px_rgba(244,66,255,0.5)]">
                 ${product.precioUnit.toLocaleString("es-CL")}
               </div>
             </div>
 
-            {product.precioMayor && product.precioMayor > 0 && (
-              <div className="rounded-lg border-2 border-[#4ef3ff]/30 bg-[#4ef3ff]/5 p-4 text-center">
-                <div className="text-white/60 text-xs uppercase tracking-wide mb-2 flex items-center justify-center gap-2">
-                  <span>📦</span>
-                  <span>Precio Mayorista</span>
-                </div>
-                <div className="text-2xl font-extrabold text-[#4ef3ff] drop-shadow-[0_0_10px_rgba(78,243,255,0.5)]">
-                  ${product.precioMayor.toLocaleString("es-CL")}
-                </div>
-                {product.umbralMayor && (
-                  <div className="text-xs text-white/50 mt-1">{product.umbralMayor}</div>
-                )}
+            <div className={`rounded-lg border-2 p-5 text-center transform hover:scale-105 transition-transform cursor-pointer ${
+              hasMayorista 
+                ? "border-[#4ef3ff]/30 bg-[#4ef3ff]/5" 
+                : "border-white/10 bg-white/5"
+            }`}>
+              <div className="text-white/60 text-xs uppercase tracking-wide mb-3 flex items-center justify-center gap-2">
+                <span>❄️</span>
+                <span>Precio al por Mayor</span>
               </div>
-            )}
+              <div className={`text-4xl font-extrabold mb-3 drop-shadow-[0_0_10px_rgba(78,243,255,0.5)] ${
+                hasMayorista ? "text-[#4ef3ff]" : "text-white/50"
+              }`}>
+                {hasMayorista ? `$${product.precioMayor?.toLocaleString("es-CL")}` : "No aplica"}
+              </div>
+              {hasMayorista && (
+                <div className="inline-block bg-[#4ef3ff]/20 text-[#4ef3ff] text-xs font-bold px-3 py-1 rounded-full">
+                  ¡AHORRA MÁS! ❄️
+                </div>
+              )}
+            </div>
           </div>
-
-          <button
-            onClick={onClose}
-            className="w-full py-3 bg-gradient-to-r from-[#f442ff] to-[#4ef3ff] text-[#0a0a10] font-bold rounded-lg hover:opacity-90 transition"
-          >
-            Ver catálogo
-          </button>
         </div>
       </div>
     </div>
