@@ -116,28 +116,28 @@ function SuperfavoritoModal({ product, onClose }: { product: Product | null; onC
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-      <div className="w-full max-w-md bg-modal-bg rounded-2xl shadow-glow-strong border border-white/8 overflow-hidden relative animate-shake">
+      <div className="w-full max-w-sm bg-modal-bg rounded-2xl shadow-glow-strong border border-white/8 overflow-hidden relative modal-anim">
         {/* Degradado de fondo */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#f442ff]/5 to-[#4ef3ff]/5 pointer-events-none" />
         
         {/* Header con botón cerrar */}
         <div className="relative flex justify-between items-center p-4 border-b border-white/10">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">⭐</span>
-            <h3 className="text-lg font-bold bg-gradient-to-r from-[#f442ff] to-[#4ef3ff] bg-clip-text text-transparent">
+          <div className="flex items-center gap-2 flex-1">
+            <span className="text-xl">⭐</span>
+            <h3 className="text-base font-bold bg-gradient-to-r from-[#f442ff] to-[#4ef3ff] bg-clip-text text-transparent truncate">
               SUPER FAVORITO
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="text-white/60 hover:text-white transition w-6 h-6 flex items-center justify-center rounded hover:bg-white/10"
+            className="text-white/60 hover:text-white transition w-6 h-6 flex items-center justify-center rounded hover:bg-white/10 flex-shrink-0"
           >
             ✕
           </button>
         </div>
 
-        {/* Imagen del producto - más grande */}
-        <div className="relative overflow-hidden h-80 w-full">
+        {/* Imagen del producto - mismo tamaño que ProductModal */}
+        <div className="relative overflow-hidden h-48 w-full">
           <img
             src={getImagePath(product.sku)}
             alt={`${product.nombre} - SUPER FAVORITO - ${product.categoria} congelado`}
@@ -153,31 +153,31 @@ function SuperfavoritoModal({ product, onClose }: { product: Product | null; onC
         </div>
 
         {/* Contenido */}
-        <div className="p-6 flex flex-col gap-4 relative">
-          <h2 className="text-2xl font-bold text-center text-white font-display">{product.nombre}</h2>
+        <div className="p-5 flex flex-col gap-3 relative">
+          <h2 className="text-xl font-bold text-center text-white">{product.nombre}</h2>
           
-          <div className="space-y-3">
-            <div className="rounded-lg border-2 border-[#f442ff]/30 bg-[#f442ff]/5 p-5 text-center transform hover:scale-105 transition-transform cursor-pointer">
-              <div className="text-white/60 text-xs uppercase tracking-wide mb-3 flex items-center justify-center gap-2">
+          <div className="space-y-2">
+            <div className="rounded-lg border-2 border-[#f442ff]/30 bg-[#f442ff]/5 p-4 text-center">
+              <div className="text-white/60 text-xs uppercase tracking-wide mb-2 flex items-center justify-center gap-2">
                 <span>🛒</span>
                 <span>Precio Individual</span>
               </div>
-              <div className="text-3xl font-extrabold text-[#f442ff] drop-shadow-[0_0_10px_rgba(244,66,255,0.5)]">
+              <div className="text-2xl font-extrabold text-[#f442ff] drop-shadow-[0_0_10px_rgba(244,66,255,0.5)]">
                 ${product.precioUnit.toLocaleString("es-CL")}
               </div>
             </div>
 
             {product.precioMayor && product.precioMayor > 0 && (
-              <div className="rounded-lg border-2 border-[#4ef3ff]/30 bg-[#4ef3ff]/5 p-5 text-center">
-                <div className="text-white/60 text-xs uppercase tracking-wide mb-3 flex items-center justify-center gap-2">
+              <div className="rounded-lg border-2 border-[#4ef3ff]/30 bg-[#4ef3ff]/5 p-4 text-center">
+                <div className="text-white/60 text-xs uppercase tracking-wide mb-2 flex items-center justify-center gap-2">
                   <span>📦</span>
                   <span>Precio Mayorista</span>
                 </div>
-                <div className="text-3xl font-extrabold text-[#4ef3ff] drop-shadow-[0_0_10px_rgba(78,243,255,0.5)]">
+                <div className="text-2xl font-extrabold text-[#4ef3ff] drop-shadow-[0_0_10px_rgba(78,243,255,0.5)]">
                   ${product.precioMayor.toLocaleString("es-CL")}
                 </div>
                 {product.umbralMayor && (
-                  <div className="text-xs text-white/50 mt-2">{product.umbralMayor}</div>
+                  <div className="text-xs text-white/50 mt-1">{product.umbralMayor}</div>
                 )}
               </div>
             )}
