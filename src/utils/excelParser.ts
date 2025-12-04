@@ -41,6 +41,8 @@ export function parseExcelFile(file: File): Promise<Product[]> {
           umbralMayor: headers.findIndex(h => h && h.toLowerCase().includes('precio mayor desde')),
           sku: headers.findIndex(h => h && (h.toUpperCase() === 'SKU' || h.toLowerCase() === 'sku')), // Busca exactamente "SKU"
           imagen: headers.findIndex(h => h && h.toUpperCase() === 'IMAGEN'),
+          favorito: headers.findIndex(h => h && h.toLowerCase().includes('favorito') && !h.toLowerCase().includes('superfavorito')),
+          superfavorito: headers.findIndex(h => h && h.toLowerCase().includes('superfavorito')),
         }
 
         console.log('Headers:', headers)
@@ -61,6 +63,17 @@ export function parseExcelFile(file: File): Promise<Product[]> {
             const precioUnit = Number(row[columnIndexes.precioUnit]) || 0
             const precioMayor = row[columnIndexes.precioMayor] ? Number(row[columnIndexes.precioMayor]) : null
             const umbralMayor = row[columnIndexes.umbralMayor] ? String(row[columnIndexes.umbralMayor]).trim() : null
+            
+            // Helper para convertir valores booleanos del Excel
+            const parseBoolean = (value: any): boolean => {
+              if (typeof value === 'boolean') return value
+              if (typeof value === 'number') return value !== 0
+              const str = String(value || '').toLowerCase().trim()
+              return str === 'verdadero' || str === 'true' || str === '1' || str === 'sí' || str === 'si'
+            }
+            
+            const favorito = columnIndexes.favorito >= 0 ? parseBoolean(row[columnIndexes.favorito]) : false
+            const superfavorito = columnIndexes.superfavorito >= 0 ? parseBoolean(row[columnIndexes.superfavorito]) : false
 
             return {
               sku,
@@ -69,8 +82,8 @@ export function parseExcelFile(file: File): Promise<Product[]> {
               precioUnit,
               precioMayor: precioMayor && precioMayor > 0 ? precioMayor : null,
               umbralMayor,
-              favorito: false,
-              superfavorito: false,
+              favorito,
+              superfavorito,
               visible: true,
             }
           })
