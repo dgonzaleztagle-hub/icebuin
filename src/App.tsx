@@ -230,7 +230,6 @@ function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState("todos")
   const [search, setSearch] = useState("")
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  const [superfavoritoShown, setSuperfavoritoShown] = useState<string | null>(null)
   const [superfavoritoModal, setSuperfavoritoModal] = useState<Product | null>(null)
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
@@ -282,15 +281,14 @@ function HomePage() {
     const superfav = ordered.find(p => p.superfavorito)
     const categoryKey = `superfav_shown_${selectedCategory}`
     
-    if (superfav && !superfavoritoShown) {
+    if (superfav) {
       const hasBeenShown = sessionStorage.getItem(categoryKey)
       if (!hasBeenShown) {
         setSuperfavoritoModal(superfav)
         sessionStorage.setItem(categoryKey, 'true')
-        setSuperfavoritoShown(categoryKey)
       }
     }
-  }, [selectedCategory, ordered, superfavoritoShown])
+  }, [selectedCategory, ordered])
 
   return (
     <div className="min-h-screen text-white">
