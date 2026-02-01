@@ -48,7 +48,7 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
       <div className="w-full max-w-sm bg-modal-bg rounded-2xl shadow-glow-strong border border-white/8 modal-anim overflow-hidden relative">
         {/* Degradado de fondo */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#f442ff]/5 to-[#4ef3ff]/5 pointer-events-none" />
-        
+
         <div className="relative overflow-hidden">
           <img
             src={getImagePath(product.sku)}
@@ -84,18 +84,16 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
               </div>
             </div>
 
-            <div className={`rounded-lg border-2 p-5 text-center transform hover:scale-105 transition-transform cursor-pointer ${
-              hasMayorista 
-                ? "border-[#4ef3ff]/30 bg-[#4ef3ff]/5" 
-                : "border-white/10 bg-white/5"
-            }`}>
+            <div className={`rounded-lg border-2 p-5 text-center transform hover:scale-105 transition-transform cursor-pointer ${hasMayorista
+              ? "border-[#4ef3ff]/30 bg-[#4ef3ff]/5"
+              : "border-white/10 bg-white/5"
+              }`}>
               <div className="text-white/60 text-xs uppercase tracking-wide mb-3 flex items-center justify-center gap-2">
                 <span>❄️</span>
                 <span>Precio al por Mayor</span>
               </div>
-              <div className={`text-4xl font-extrabold mb-3 drop-shadow-[0_0_10px_rgba(78,243,255,0.5)] ${
-                hasMayorista ? "text-[#4ef3ff]" : "text-white/50"
-              }`}>
+              <div className={`text-4xl font-extrabold mb-3 drop-shadow-[0_0_10px_rgba(78,243,255,0.5)] ${hasMayorista ? "text-[#4ef3ff]" : "text-white/50"
+                }`}>
                 {hasMayorista ? `$${product.precioMayor?.toLocaleString("es-CL")}` : "No aplica"}
               </div>
               {hasMayorista && (
@@ -113,7 +111,7 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
 
 function SuperfavoritoModal({ product, onClose }: { product: Product | null; onClose: () => void }) {
   if (!product) return null
-  
+
   const hasMayorista = product.precioMayor && product.precioMayor > 0
 
   return (
@@ -121,7 +119,7 @@ function SuperfavoritoModal({ product, onClose }: { product: Product | null; onC
       <div className="w-full max-w-sm bg-modal-bg rounded-2xl shadow-glow-strong border border-white/8 modal-anim overflow-hidden relative">
         {/* Degradado de fondo */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#f442ff]/5 to-[#4ef3ff]/5 pointer-events-none" />
-        
+
         <div className="relative overflow-hidden">
           <img
             src={getImagePath(product.sku)}
@@ -164,18 +162,16 @@ function SuperfavoritoModal({ product, onClose }: { product: Product | null; onC
               </div>
             </div>
 
-            <div className={`rounded-lg border-2 p-5 text-center transform hover:scale-105 transition-transform cursor-pointer ${
-              hasMayorista 
-                ? "border-[#4ef3ff]/30 bg-[#4ef3ff]/5" 
+            <div className={`rounded-lg border-2 p-5 text-center transform hover:scale-105 transition-transform cursor-pointer ${hasMayorista
+                ? "border-[#4ef3ff]/30 bg-[#4ef3ff]/5"
                 : "border-white/10 bg-white/5"
-            }`}>
+              }`}>
               <div className="text-white/60 text-xs uppercase tracking-wide mb-3 flex items-center justify-center gap-2">
                 <span>❄️</span>
                 <span>Precio al por Mayor</span>
               </div>
-              <div className={`text-4xl font-extrabold mb-3 drop-shadow-[0_0_10px_rgba(78,243,255,0.5)] ${
-                hasMayorista ? "text-[#4ef3ff]" : "text-white/50"
-              }`}>
+              <div className={`text-4xl font-extrabold mb-3 drop-shadow-[0_0_10px_rgba(78,243,255,0.5)] ${hasMayorista ? "text-[#4ef3ff]" : "text-white/50"
+                }`}>
                 {hasMayorista ? `$${product.precioMayor?.toLocaleString("es-CL")}` : "No aplica"}
               </div>
               {hasMayorista && (
@@ -208,11 +204,10 @@ function CategoryMenu({
           <button
             key={cat}
             onClick={() => onChange(cat)}
-            className={`px-4 py-2 rounded-full text-sm border transition ${
-              active
-                ? "border-[#f442ff]/60 text-white bg-[#f442ff]/15 shadow-glow"
-                : "border-white/10 text-white/70 hover:border-white/30"
-            }`}
+            className={`px-4 py-2 rounded-full text-sm border transition ${active
+              ? "border-[#f442ff]/60 text-white bg-[#f442ff]/15 shadow-glow"
+              : "border-white/10 text-white/70 hover:border-white/30"
+              }`}
           >
             {cat === "todos" ? "Todos" : cat.charAt(0).toUpperCase() + cat.slice(1)}
           </button>
@@ -244,7 +239,7 @@ function HomePage() {
       }
       setLoading(false)
     }
-    
+
     loadProducts()
   }, [])
 
@@ -276,7 +271,7 @@ function HomePage() {
   useEffect(() => {
     const superfav = ordered.find(p => p.superfavorito)
     const categoryKey = `superfav_shown_${selectedCategory}`
-    
+
     if (superfav) {
       const hasBeenShown = sessionStorage.getItem(categoryKey)
       if (!hasBeenShown) {
@@ -359,7 +354,7 @@ function HomePage() {
                 Pedir por WhatsApp
               </a>
             </div>
-            </div>
+          </div>
         </section>
       </div>
 
@@ -410,7 +405,7 @@ function HomePage() {
             <div>Gabriel Cruz 1762, Buin Oriente, Región Metropolitana, Chile</div>
             <div>📞 +56 9 5515 9677</div>
           </div>
-          
+
           {/* Redes Sociales */}
           <div className="flex gap-4 justify-center mt-4">
             <a
@@ -436,6 +431,19 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <footer className="pb-8 pt-4 text-center">
+        <a
+          href="https://hojacero.cl"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[9px] opacity-30 hover:opacity-100 uppercase tracking-widest transition-all text-[#4ef3ff] hover:text-[#f442ff]"
+          aria-label="HojaCero - Estudio digital en Santiago de Chile. Desarrollo web, aplicaciones y soluciones digitales a medida para negocios y proyectos técnicos. Contacto: contacto@hojacero.cl"
+          title="HojaCero.cl | Ingeniería Digital & Estrategia AEO"
+        >
+          By hojacero.cl
+        </a>
+      </footer>
 
       {selectedProduct && <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />}
       {superfavoritoModal && <SuperfavoritoModal product={superfavoritoModal} onClose={() => setSuperfavoritoModal(null)} />}
@@ -492,14 +500,14 @@ function AdminPage() {
     try {
       const fileContent = await descriptionsFile.text()
       const data = JSON.parse(fileContent)
-      
+
       if (!data.descriptions || !Array.isArray(data.descriptions)) {
         setDescriptionsStatus("✗ Formato inválido. El archivo debe contener una propiedad 'descriptions' con un array.")
         return
       }
 
       const result = await uploadDescriptions(data.descriptions)
-      
+
       if (result.success) {
         setDescriptionsStatus(`✓ ${result.updated} descripciones actualizadas exitosamente!`)
       } else {
@@ -522,12 +530,12 @@ function AdminPage() {
     if (imagesCount === 0) {
       setStatus("⚠️ Ninguna imagen subida. Los productos cargarán sin imágenes por ahora.")
     }
-    
+
     setStatus("Guardando productos en la base de datos...")
-    
+
     try {
       const success = await uploadProductsFromExcel(loadedProducts)
-      
+
       if (success) {
         setStatus(`✓ ${loadedProducts.length} productos guardados en BD correctamente! Recarga la página.`)
       } else {
@@ -626,13 +634,12 @@ function AdminPage() {
 
             {status && (
               <div
-                className={`text-sm p-3 rounded-lg ${
-                  status.includes("✓")
-                    ? "bg-green-500/20 text-green-300 border border-green-500/40"
-                    : status.includes("✗")
-                      ? "bg-red-500/20 text-red-300 border border-red-500/40"
-                      : "bg-yellow-500/20 text-yellow-300 border border-yellow-500/40"
-                }`}
+                className={`text-sm p-3 rounded-lg ${status.includes("✓")
+                  ? "bg-green-500/20 text-green-300 border border-green-500/40"
+                  : status.includes("✗")
+                    ? "bg-red-500/20 text-red-300 border border-red-500/40"
+                    : "bg-yellow-500/20 text-yellow-300 border border-yellow-500/40"
+                  }`}
               >
                 {status}
               </div>
@@ -677,13 +684,12 @@ function AdminPage() {
 
             {descriptionsStatus && (
               <div
-                className={`text-sm p-3 rounded-lg ${
-                  descriptionsStatus.includes("✓")
-                    ? "bg-green-500/20 text-green-300 border border-green-500/40"
-                    : descriptionsStatus.includes("✗")
-                      ? "bg-red-500/20 text-red-300 border border-red-500/40"
-                      : "bg-blue-500/20 text-blue-300 border border-blue-500/40"
-                }`}
+                className={`text-sm p-3 rounded-lg ${descriptionsStatus.includes("✓")
+                  ? "bg-green-500/20 text-green-300 border border-green-500/40"
+                  : descriptionsStatus.includes("✗")
+                    ? "bg-red-500/20 text-red-300 border border-red-500/40"
+                    : "bg-blue-500/20 text-blue-300 border border-blue-500/40"
+                  }`}
               >
                 {descriptionsStatus}
               </div>
