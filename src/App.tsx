@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
 import { useMemo, useState, type ChangeEvent, useEffect } from "react"
-import { mockProducts, type Product } from "./data/mockProducts"
+import { type Product } from "./data/mockProducts"
 import { parseExcelFile, processProducts } from "./utils/excelParser"
 import { getImagePath } from "./utils/imageLoader"
 import { getAllProducts, uploadProductsFromExcel, uploadDescriptions } from "./utils/apiClient"
@@ -163,8 +163,8 @@ function SuperfavoritoModal({ product, onClose }: { product: Product | null; onC
             </div>
 
             <div className={`rounded-lg border-2 p-5 text-center transform hover:scale-105 transition-transform cursor-pointer ${hasMayorista
-                ? "border-[#4ef3ff]/30 bg-[#4ef3ff]/5"
-                : "border-white/10 bg-white/5"
+              ? "border-[#4ef3ff]/30 bg-[#4ef3ff]/5"
+              : "border-white/10 bg-white/5"
               }`}>
               <div className="text-white/60 text-xs uppercase tracking-wide mb-3 flex items-center justify-center gap-2">
                 <span>❄️</span>
@@ -223,13 +223,11 @@ function HomePage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [superfavoritoModal, setSuperfavoritoModal] = useState<Product | null>(null)
   const [products, setProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
   const logoSrc = "/logoicebuin.jpg"
 
   // Cargar productos desde API (BD en Vercel)
   useEffect(() => {
     async function loadProducts() {
-      setLoading(true)
       try {
         const apiProducts = await getAllProducts()
         setProducts(apiProducts)
@@ -237,7 +235,6 @@ function HomePage() {
         console.error('Failed to load products:', error)
         setProducts([])
       }
-      setLoading(false)
     }
 
     loadProducts()
