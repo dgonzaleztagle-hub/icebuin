@@ -1,0 +1,104 @@
+import type { Product } from './excelParser';
+
+const API_BASE = process.env.NODE_ENV === 'production' 
+  ? 'https://icebuin.vercel.app/api'
+  : 'http://localhost:3000/api';
+
+export async function getAllProducts(): Promise<Product[]> {
+  try {
+    const response = await fetch(`${API_BASE}/products`);
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching products from API:', error);
+    throw error;
+  }
+}
+
+export async function uploadProductsFromExcel(products: Product[]): Promise<boolean> {
+  try {
+    const response = await fetch(`${API_BASE}/products`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(products),
+    });
+    
+    if (!response.ok) {
+      console.error('Failed to upload products');
+      return false;
+    }
+    
+    return true;
+  } catch (error) {
+    console.error('Error uploading products:', error);
+    return false;
+  }
+}
+
+export async function updateProduct(sku: string, updates: Partial<Product>): Promise<boolean> {
+  try {
+    const response = await fetch(`${API_BASE}/products`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ sku, ...updates }),
+    });
+    
+    if (!response.ok) {
+      console.error('Failed to update product');
+      return false;
+    }
+    
+    return true;
+  } catch (error) {
+    console.error('Error updating product:', error);
+    return false;
+  }
+}
+
+export async function deleteProduct(sku: string): Promise<boolean> {
+  try {
+    const response = await fetch(`${API_BASE}/products?sku=${sku}`, {
+      method: 'DELETE',
+    });
+    
+    if (!response.ok) {
+      console.error('Failed to delete product');
+      return false;
+    }
+    
+    return true;
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    return false;
+  }
+}
+
+export async function uploadDescriptions(descriptions: Array<{sku: string; descripcion: string}>): Promise<{success: boolean; updated: number; failed: number}> {
+  try {
+    const response = await fetch(`${API_BASE}/update-descriptions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ descriptions }),
+    });
+    
+    if (!response.ok) {
+      console.error('Failed to upload descriptions');
+      return { success: false, updated: 0, failed: descriptions.length };
+    }
+    
+    const data = await response.json();
+    return { success: true, updated: data.updated, failed: data.failed };
+  } catch (error) {
+    console.error('Error uploading descriptions:', error);
+    return { success: false, updated: 0, failed: descriptions.length };
+  }
+}
